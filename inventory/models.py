@@ -4,7 +4,7 @@ from django.db import models
 class Product(models.Model):
     product_name=models.CharField(max_length=200, unique=True)
     price=models.IntegerField(null=True)
-    image = models.ImageField(upload_to="photos/products", null=True)
+    image = models.ImageField(upload_to="photos/inventory", null=True)
     stock = models.IntegerField(null=True)
     is_available=models.BooleanField(default=True,null=True)
     created_date=models.DateTimeField(auto_now_add=True)
