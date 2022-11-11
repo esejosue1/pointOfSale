@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inventory',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +127,6 @@ STATICFILES_DIRS=[
 #media files configuration
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
+
+# template directory
+TEMPLATE_DIRS = ['templates']
