@@ -21,9 +21,7 @@ def cart_add(request, product_id):
         cart_item = CartItem.objects.get(cart=cart, product=item)
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(cart=cart, product=item)
-    #form = CartAddProductForm(request.POST)
-    #if form.is_valid():
-    #    cd = form.cleaned_data
+
     cart_item.quantity += 1
     cart_item.save()
     print(product_id, item, cart_item.quantity, cart_item)

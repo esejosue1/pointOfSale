@@ -378,8 +378,9 @@ $(document).ready(function() {
                                     <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
                                 </a>
                             </td>
-                            <td>{{ product.name }}</td>
+                            <td>{{ product.product_name }}</td>
                             <td>
+								{{ item.quantity }}
                                 <form action="{% url "cart:cart_add" product.id %}" method="post">
                                     {% csrf_token %}
                                     {{ item.update_quantity_form.quantity }}
@@ -390,15 +391,15 @@ $(document).ready(function() {
                             <td>
                                 <a href="{% url "cart:cart_remove" product.id %}">Remove</a>
                             </td>
-                            <td>kshs. {{ item.price }}</td>
-                            <td>kshs. {{ item.total_price }}</td>
+                            <td>${{ product.price }}</td>
+                            <td>${{ item.itemtotal}}</td>
                         </tr>
                     {% endwith %}
                 {% endfor %}
                 <tr style="background-color: #5AC8FA">
                     <td><b>Total</b></td>
                     <td colspan="4"></td>
-                    <td colspan="num"><b>$0.00 {{ cart.get_total_price }}</b></td>
+                    <td colspan="num"><b>${{ cart_items.carttotal }}</b></td>
                 </tr>
                 </tbody>
             </table>
@@ -406,6 +407,6 @@ $(document).ready(function() {
         </p>
         </div>
     </div>
-	
+
 {% endblock %}
 </html>

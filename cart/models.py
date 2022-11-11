@@ -10,13 +10,17 @@ class ShoppingCart(models.Model):
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cart = models.ForeignKey(ShoppingCart, on_delete=models.CASCADE, null=True)
-    # manytomanyfield is for a product to have other variations for the same prsoduct
     quantity = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
-    # show current total of specific product items
-    def subtotal(self):
+    @property
+    def itemtotal(self):
         return self.product.price*self.quantity
+
+    @property
+    def carttotal(self):
+        return sum(self.itemtotal for self.product in self.cart)
+
 
     def __unicode__(self):
         return self.product
