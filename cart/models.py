@@ -21,7 +21,6 @@ class CartItem(models.Model):
     def carttotal(self):
         return sum(self.itemtotal for self.product in self.cart)
 
-
     def __unicode__(self):
         return self.product
         
