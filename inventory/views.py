@@ -7,9 +7,11 @@ def inventory(request):
     product_count=products.count()
     print(products.count())
 
+    #passing info to front end
     context={
         "products":products,
         "product_count":product_count,
     }
 
     return render(request, 'templates/home.html', context)
+

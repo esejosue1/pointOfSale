@@ -11,3 +11,6 @@ def home(request):
         "products":products,
     }
     return render(request, "home.html", context)
+
+def orders(request):
+    return render(request, "place-order.html")
