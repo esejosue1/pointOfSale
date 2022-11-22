@@ -5,8 +5,10 @@ from .models import Product
 def inventory(request):
     products=Product.objects.all().filter(is_available=True)
 
+    #passing info to front end
     context={
         "products":products,
     }
 
     return render(request, 'templates/home.html', context)
+
