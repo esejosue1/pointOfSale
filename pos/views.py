@@ -13,7 +13,7 @@ def home(request):
     context={
         "products":products,
     }
-    return render(request, "home.html", context)
+    return render(request, "index.html", context)
 
 
 def cart(request):  
@@ -22,6 +22,8 @@ def cart(request):
         "cart":cart
     }
     return render(request, "cart.html", context)
+def cart1(request):  
+    return render(request, "cart1.html", )
 
 '''
 def cart(request):

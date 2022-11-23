@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('', views.home, name='home'),
     path('cart/', views.cart, name='cart'), # added for cart
+    path('cart1/', views.cart1, name='cart1'), # added for cart
     path('', include('cart.urls')),  # added for cart
 
     path('orders/', views.orders, name="orders"),
