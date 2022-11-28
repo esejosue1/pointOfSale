@@ -259,7 +259,7 @@
 
   <header>
     <div class="header">
-      <a href="index.html">
+      <a href="{% url 'home' %}">
         <img src="{%static './images/logo.svg' %}" id="logo">
       </a>
     </div>
@@ -284,11 +284,10 @@
     <div class="left">
       <h2>Filters</h2>
       <!-- START CATEGORIES -->
-      <h3>Categories</h3>
-      <a href="#" class="category">Category</a>
-      <a href="#" class="category">Category</a>
-      <a href="#" class="category">Category</a>
-      <a href="#" class="category">Category</a>
+      <h3>Menu</h3>
+      {% for category in links%}
+      <a href="{{category.get_url}}" class="category">{{category.category_name}}</a>
+      {% endfor %}
     </div>
     <!-- ^ END LEFT FILTER MENU -->
 

@@ -22,11 +22,10 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', views.home, name='home'),
     path('cart/', views.cart, name='cart'), # added for cart
     path('cart1/', views.cart1, name='cart1'), # added for cart
     path('', include('cart.urls')),  # added for cart
     path('orders/', views.orders, name="orders"),
-    #path('category/', views.category, name='category'),
+    path('inventory/', include('inventory.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
