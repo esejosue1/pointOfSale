@@ -285,9 +285,12 @@
       <h2>Filters</h2>
       <!-- START CATEGORIES -->
       <h3>Menu</h3>
+      
       {% for category in links%}
       <a href="{{category.get_url}}" class="category">{{category.category_name}}</a>
       {% endfor %}
+    
+
     </div>
     <!-- ^ END LEFT FILTER MENU -->
 
