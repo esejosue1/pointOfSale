@@ -259,7 +259,7 @@
 
   <header>
     <div class="header">
-      <a href="index.html">
+      <a href="{% url 'home' %}">
         <img src="{%static './images/logo.svg' %}" id="logo">
       </a>
     </div>
@@ -319,7 +319,7 @@
         <form action="{% url "cart:cart_add" product.id %}" method="post" class="add-to-cart">
             {% csrf_token %}
             {{ cart_product_form }}
-            <input type="submit" class="buy-now btn btn-sm btn-primary" value="Add to cart">
+            <input type="submit" class="add-to-cart" value="Add to cart">
         </form>
         <!-- ^ END ADD TO CART BUTTON -->
       </div>

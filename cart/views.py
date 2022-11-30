@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from inventory.models import Product
-from .cart import Cart
-from .forms import CartAddProductForm
 from cart.models import CartItem, ShoppingCart
 
 def _cart_id(request):
@@ -24,32 +22,62 @@ def cart_add(request, product_id):
 
     cart_item.quantity += 1
     cart_item.save()
-    print(product_id, item, cart_item.quantity, cart_item)
+
     return redirect("cart:cart_detail")
 
 
 def cart_remove(request, product_id):
-    cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    cart.remove(product)
+    item = get_object_or_404(Product, id=product_id)
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=item, cart=cart)
+        cart_item.delete()
+    except ShoppingCart.DoesNotExist:
+        print('remove failed')
+
     return redirect('cart:cart_detail')
 
-'''
-def cart_detail(request):
-    cart = ShoppingCart.objects.filter()
-    context = {'cart':cart}
-    return render(request, 'cart', context)
-'''
+def cart_increment(request, product_id):
+    item = get_object_or_404(Product, id=product_id)
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=item, cart=cart)
+        cart_item.quantity += 1
+        cart_item.save()
+    except ShoppingCart.DoesNotExist:
+        print('increment failed')
+
+    return redirect('cart:cart_detail')
+
+def cart_decrement(request, product_id):
+    item = get_object_or_404(Product, id=product_id)
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=item, cart=cart)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_remove(request, product_id)
+    except ShoppingCart.DoesNotExist:
+        print('decrement failed')
+
+    return redirect('cart:cart_detail')
 
 def cart_detail(request):
     cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
     cart_items = CartItem.objects.filter(is_active=True, cart=cart)
-    #for item in cart_items:
-    #    print(item.product.product_name)
-    #for item in cart_items:
-    #    item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
+
+    cart_subtotal = sum(item.itemtotal for item in cart_items)
+    cart_tax = cart_subtotal * (0.077) # tax rate (7.7%)
+    cart_shipping = 10 # shipping rate (flat $10)
+    cart_total = cart_subtotal + cart_tax + cart_shipping
     context = {
-        'cart_items': cart_items
+        'cart_items': cart_items,
+        'cart_subtotal': cart_subtotal,
+        'cart_tax': cart_tax,
+        'cart_shipping': cart_shipping,
+        'cart_total': cart_total,
     }
     
     return render(request, 'cart.html', context)
