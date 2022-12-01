@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 from inventory.models import Product
 from cart.models import CartItem, ShoppingCart
 
+
 def _cart_id(request):
     return request.session.session_key or request.session.create()
 
@@ -65,19 +66,23 @@ def cart_decrement(request, product_id):
     return redirect('cart:cart_detail')
 
 def cart_detail(request):
-    cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+    except ShoppingCart.DoesNotExist:
+        cart = ShoppingCart.objects.create(cart_id=_cart_id(request))
+#    cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
     cart_items = CartItem.objects.filter(is_active=True, cart=cart)
 
     cart_subtotal = sum(item.itemtotal for item in cart_items)
-    cart_tax = cart_subtotal * (0.077) # tax rate (7.7%)
+    cart_tax = cart_subtotal * (0.055) # tax rate (5.5%)
     cart_shipping = 10 # shipping rate (flat $10)
     cart_total = cart_subtotal + cart_tax + cart_shipping
     context = {
         'cart_items': cart_items,
-        'cart_subtotal': cart_subtotal,
-        'cart_tax': cart_tax,
-        'cart_shipping': cart_shipping,
-        'cart_total': cart_total,
+        'cart_subtotal': '{:.2f}'.format(cart_subtotal),
+        'cart_tax': '{:.2f}'.format(cart_tax),
+        'cart_shipping': '{:.2f}'.format(cart_shipping),
+        'cart_total': '{:.2f}'.format(cart_total),
     }
     
     return render(request, 'cart.html', context)
