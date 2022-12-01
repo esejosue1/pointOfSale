@@ -48,5 +48,3 @@ def product_detail(request, id, slug):
     context = {'product': product, 'cart_product_form': cart_product_form}
     return render(request, 'shop/product/detail.html', context)
 '''
-def orders(request):
-    return render(request, "place-order.html")
