@@ -7,6 +7,13 @@ class ShoppingCart(models.Model):
     def __str__(self):
         return self.cart_id
 
+    def remove(self, product_id):
+        """
+        Remove a product from the cart.
+        """
+        #product_id = str(product.id)
+        del product_id
+
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cart = models.ForeignKey(ShoppingCart, on_delete=models.CASCADE, null=True)

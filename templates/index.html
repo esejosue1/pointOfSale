@@ -265,7 +265,7 @@
     </div>
 
     <div class="topnav">
-      <a id="cart" href="{% url 'cart1' %}"><img class="bag-icon" src="{%static './images/bag.svg' %}"></a>
+      <a id="cart" href="{% url 'cart:cart_detail' %}"><img class="bag-icon" src="{%static './images/bag.svg' %}"></a>
       <a id="account" href="account.html"><img class="user-icon" src="{% static './images/user.svg' %}"></a>
       <!-- SEARCH BAR START -->
       <div class="search-container">
@@ -321,7 +321,7 @@
         <form action="{% url "cart:cart_add" product.id %}" method="post" class="add-to-cart">
             {% csrf_token %}
             {{ cart_product_form }}
-            <input type="submit" class="buy-now btn btn-sm btn-primary" value="Add to cart">
+            <input type="submit" class="add-to-cart" value="Add to cart">
         </form>
         <!-- ^ END ADD TO CART BUTTON -->
       </div>
