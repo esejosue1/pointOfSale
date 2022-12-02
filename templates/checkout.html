@@ -23,7 +23,7 @@
       <a id="account" href="account.html"><img class="user-icon" src="images/user.svg"></a>
       <!-- SEARCH BAR START -->
       <div class="search-container">
-        <form action="">
+        <form action="/action_page.php">
           <input type="text" placeholder="Search..." name="search">
           <button class="search-button" type="submit"><img src="images/search.svg"></button>
         </form>
@@ -38,8 +38,9 @@
       <h1>Checkout</h1>
       <h2>Shipping Information</h2>
     </div>
+<form action = "{% url 'completeOrder' %}" method = "POST">
+  {% csrf_token %}
 
-    <form action="{% url 'test'%}"  method='POST'>
     <div class="sname">
       <div class="info">
         <label for="shipping first name">First Name:</label>
@@ -135,14 +136,13 @@
     <div class="scontact">
       <div class="info">
         <label for="shipping phone">Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;</label>
-        <input placeholder="(123) 123-4567" id="shipping first name" type="text" size="25" />
+        <input placeholder="(123) 123-4567" id="shipping phone" type="text" size="25" />
 
         <label for="shipping email">Email:</label>
         <input placeholder="name@gmail.com" id="shipping email" type="text" size="30" />
       </div>
     </div>
-  </form>
-
+  
     <h2>Payment Options</h2>
     <div id="paypal-button-container" style="width:17px;">
       <!--</div>-->
@@ -184,9 +184,11 @@
 
         }).render('#paypal-button-container');
       </script>
-      <button class="checkout-button">Place Order</button>
+      <button type = "submit" class="checkout-button">Place Order</button>
     </div>
  </div>
+
+</form>
   <!-- ^ END CONTENT WRAPPER -->
   <div class="footer">
     <!--     <h2>Footer</h2> -->

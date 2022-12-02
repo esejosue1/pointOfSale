@@ -43,6 +43,7 @@ class Order(models.Model):
     country = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
+    zip = models.IntegerField(max_length=5, null = True)
     order_total = models.FloatField()
     tax = models.FloatField()
     status = models.CharField(max_length=100, choices=STATUS, default='New')
