@@ -1,0 +1,56 @@
+body{
+  margin-top: 20px;
+}
+
+.grid-template{
+  margin-top: 10vh;
+  display: grid;
+  gap: 10px;
+  grid-template: 
+  "a a b" 
+  "a a c";
+  font-family: 'Roboto', sans-serif;
+} 
+
+p{
+  letter-spacing: .1rem;
+  line-height: 1.6;
+}
+.product-image{
+  grid-area: a;
+  margin: 0 auto;
+}
+
+.product-image img{
+  min-width: 8vw;
+  min-height: 8vh;
+  width: 600px;
+}
+
+.information{
+  grid-area: b;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  min-height: 500px;
+  padding: 30px;
+  gap: 30px;
+}
+
+.logic{
+  grid-area: c;
+  display: flex;
+  flex-direction: row;
+  max-width: 500px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logic #amount, .logic #cart-button{
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  margin-left: 10px;
+}

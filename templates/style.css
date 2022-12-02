@@ -1,0 +1,324 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 0% 5% 0% 5%;
+  /*       background: #f1f1f1; */
+  /*       background-color: #ffffff; */
+}
+
+/* Header/Blog Title */
+header {
+  /*       padding: 10px; */
+  text-align: center;
+  background-color: #ffffff;
+}
+
+#logo {
+  float: left;
+  height: 50px;
+  width: auto;
+  margin-right: 15px;
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  /*       color: black; */
+  /*       background-color: #333; */
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #000;
+  text-align: center;
+  height: 50px;
+  padding: 25px 15px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  /*       background-color: #ddd; */
+  color: black;
+}
+
+.topnav .search-container {
+  float: right;
+  height: 50px;
+  padding: 25px 15px;
+  /*       border-radius: 5px;
+  border: 0px solid transparent; */
+  /*       height: 25px; */
+  /*       width: 50px; */
+}
+
+.topnav input[type=text] {
+  /*       padding: 2px; */
+  border-radius: 15px;
+  border: 2px solid black;
+  /*       padding: 6px;
+  margin-top: 8px; */
+  /*       margin:  */
+  font-size: 1rem;
+  padding: 2px;
+  /*       border: none; */
+}
+
+
+.topnav .search-container .search-button {
+  float: right;
+  border: 0px solid transparent;
+  background-color: transparent;
+  /*       padding: 6px 10px; */
+  /*       margin-top: 8px; */
+  /*       margin-right: 16px; */
+  /*       background: #ddd; */
+  /*       font-size: 17px; */
+  /*       border: none; */
+  cursor: pointer;
+}
+
+#searchbar {
+  height: 25px;
+  width: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  
+}
+
+
+.search-container button img {
+  height: 20px;
+  width: auto;
+}
+
+#account,
+#cart {
+  float: right;
+  /*       height: 50px; */
+}
+
+.user-icon,
+.bag-icon {
+  height: 25px;
+  width: auto;
+  /*       padding: 5px; */
+}
+
+.main-holder {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+/*     .leftcolumn { */
+.left {
+  float: left;
+  width: 20%;
+  padding-top: 20px;
+  text-transform: capitalize;
+}
+
+/* Right column */
+/*     .rightcolumn { */
+.right {
+  float: left;
+  width: 80%;
+  /*       background-color: #f1f1f1; */
+  /*       padding-left: 20px; */
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 100;
+/*       margin: 10px; */
+}
+
+.left h2 {
+  font-weight: 100;
+  margin-top: 75px;
+}
+
+.category {
+  float: left;
+  width: 100%;
+  display: block;
+  /*       color: #078FCD; */
+  color: black;
+  font-weight: 600;
+  text-align: left;
+  margin: 5px 0px;
+  text-decoration: none;
+  padding: 5px 0px;
+}
+
+.category:hover {
+  padding: 5px 15px;
+  background-color: black;
+  color: white;
+}
+
+/* Add a card effect for articles */
+.product-container {
+  float: left;
+  background-color: white;
+  padding: 15px;
+  margin: 10px;
+  width: fit-content;
+  /*       padding: 20px; */
+  /*       margin-top: 20px; */
+}
+
+.product-name {
+  margin: 5px 0px;
+}
+
+.product-name a:hover {
+  color: black
+}
+
+.product-name-link {
+  text-decoration: none;
+  color: #078FCD;
+  font-weight: 600;
+
+}
+
+
+.add-to-cart, .add-to-cart.add-to-cart:visited{
+  /*       align-self: center; */
+  margin: 10px auto 0px;
+  font-size: 1rem;
+  text-align: center;
+  color: black;
+  background-color: #9BD511;
+  /* green #9BD511 */
+  padding: 5px 25px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+.add-to-cart:hover, .submit:hover {
+  border: 2px solid #9BD511;
+  background-color: white;
+  /*background-color: #078FCD; */
+  /* blue #078FCD */
+}
+
+
+.submit, .submit:visited {
+  margin: 20px auto 0px;
+  font-size: 1rem;
+  text-align: center;
+  color: black;
+  background-color: #9BD511;
+  /* red #CD0737 */
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+
+.reset, .reset:visited {
+  margin: 20px auto 0px;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  background-color: #CD0737;
+  /* red #CD0737 */
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+.reset:hover {
+  border: 2px solid #CD0737;
+  background-color: white;
+  color: black;
+}
+
+
+/* Clear floats after the columns */
+/*     .row:after { */
+.content:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+
+
+#login-header {
+  font-size: 2rem;
+}
+
+.text-form-field {
+  width: 200px;
+  height: 25px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+  margin: 0 0 10px;
+}
+
+.label {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+#register-link, #registration-link:visited {
+  text-decoration: none;
+  color: #078FCD;
+  font-weight: 600;
+}
+
+#registration-link:hover {
+  color: black;
+}
+
+    /********* START OLD *********/
+
+.product-img-link img {
+  height: 150px;
+  /*       width: auto; */
+  border-radius: 5px;
+  border: 0px solid transparent;
+}
+
+
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 800px) {
+
+      /*       .leftcolumn,
+      .rightcolumn { */
+      .left,
+      .right {
+        width: 100%;
+        padding: 0;
+      }
+    }
+
+    /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+    @media screen and (max-width: 400px) {
+      .topnav a {
+        float: none;
+        width: 100%;
+      }
+    }

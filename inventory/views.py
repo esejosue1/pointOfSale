@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product
 from category.models import Category
+from django.http import HttpResponse
 
 # Create your views here.
 def inventory(request, category_slug=None):
@@ -26,3 +27,14 @@ def inventory(request, category_slug=None):
 
     return render(request, 'index.html', context)
 
+
+def productDetail(request,category_slug, product_slug):
+    #check if we get the product
+    try:
+        product=Product.objects.get(category__slug=category_slug, slug=product_slug)
+    except Exception as e:
+        raise e
+    content ={
+        "product":product
+    }
+    return render(request, "product.html", content)
