@@ -5,11 +5,15 @@ import datetime
 # Create your views here.
 
 
+
 def completeOrder(request):
+    #check if form is post
     if request.method == "POST": 
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            data = Order()
+        form = OrderForm(request.POST)  #new var that holds the info from form.py
+        if form.is_valid():     #if valid
+            data = Order()      #var that match to the Order model
+
+            #start inserting the data from the form into the Order model
             data.first_name = form.cleaned_data["first_name"]
             data.last_name = form.cleaned_data["last_name"]
             data.phone = form.cleaned_data["phone"]
@@ -20,11 +24,11 @@ def completeOrder(request):
             data.city = form.cleaned_data["city"]
             data.zip = form.cleaned_data["zip"]
             data.ip = request.META.get('REMOTE_ADDR')
-            data.order_total = 0
-            data.tax = 0
+            data.order_total = 0    #NEEDS FIX
+            data.tax = 0            #NEEDS FIX
 
-            data.save()
-            # order number
+            data.save()     #save in database
+            # get current time
             yr = int(datetime.date.today().strftime('%Y'))
             dt = int(datetime.date.today().strftime('%d'))
             mt = int(datetime.date.today().strftime('%m'))
@@ -32,12 +36,13 @@ def completeOrder(request):
             current_date = d.strftime("%Y%m%d")
             o_number = current_date + str(data.id)
             data.order_number = o_number
-            data.save()
-            return render(request, "checkout.html")
+
+            data.save() #save in database
+            return render(request, "checkout.html")     #render back
         else:
-            print(form.errors)
+            print(form.errors)  #error
        
 
- 
+ #home page for checkout form
 def orders(request):
     return render(request, "checkout.html")

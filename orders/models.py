@@ -8,7 +8,7 @@ from inventory.models import Product
 
 # Create your models here.
 
-
+#payment class will hold the payment info 
 class Payment(models.Model):
     
     payment_id = models.CharField(max_length=100)
@@ -21,6 +21,7 @@ class Payment(models.Model):
         return self.payment_id
 
 
+#order class will hold the information from a billing/shipping form, a complete transaction order
 class Order(models.Model):
 
     STATUS = (
@@ -57,6 +58,7 @@ class Order(models.Model):
         return self.first_name
 
 
+#models class to save what products were sold within an order
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     payment = models.ForeignKey(
