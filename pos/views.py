@@ -31,7 +31,7 @@ def tempcart(request):
     context={
         "cart":cart
     }
-    return render(request, "/templates/temp/cart.html", context)
+    return render(request, "temp/cart.html", context)
 # end trial front end
 
 '''
