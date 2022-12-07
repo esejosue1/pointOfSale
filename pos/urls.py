@@ -25,8 +25,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('', include('cart.urls')),  # added for cart
     path('inventory/', include('inventory.urls')),
-    path('orders/', include("orders.urls")),
-    # trial front end
-    path('templates/', include("cart.urls"))
+    path('orders/', include("orders.urls"))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
