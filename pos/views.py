@@ -25,6 +25,15 @@ def cart(request):
 def cart1(request):  
     return render(request, "cart1.html", )
 
+# trial front end
+def tempcart(request):  
+    cart = Cart(request)
+    context={
+        "cart":cart
+    }
+    return render(request, "/templates/temp/cart.html", context)
+# end trial front end
+
 '''
 def cart(request):
     items=Cart(request)
