@@ -40,6 +40,7 @@
     <main>
       <div class="grid-template">
         <div class="product-image">
+<<<<<<< HEAD
           <img src="{{product.image.url}}">
         </div>
         <div class="information">
@@ -48,9 +49,18 @@
             {{product.description}}
           </p>
           <h2>${{product.price}}</h2>
+=======
+          <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}">
+        </div>
+        <div class="information">
+          <h1> {{product.product_name}}  </h1>
+          <p> {{ product.description }} </p>
+          <h2>${{ product.price }}  </h2>
+>>>>>>> 97374e06d8ea989f7852a67f19395332cb8c339d
         </div>
         <div class="logic">
-          <form>
+          <form action="{% url 'cart:cart_increment' product.id %}" method="post">
+            {% csrf_token %}
             <input type="number" id="amount" value="0" min="0">
             <input type="submit" id="cart-button" value="Add to Cart">
           </form>
