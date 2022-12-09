@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
-{% block content %}
 <html lang="en">
 
 <head>
@@ -186,9 +184,7 @@
 
         }).render('#paypal-button-container');
       </script>
-      <a class="checkout-button" href="{% url 'confirmation' %}">
-        <button type = "submit" class="checkout-button">Order</button>
-      </a>
+      <button type= "submit" onclick="location.href = '/completeOrder'">Place Order</button>
     </div>
  </div>
 
@@ -203,4 +199,4 @@
 
 </html>
 
-{% endblock %}
+</html>
