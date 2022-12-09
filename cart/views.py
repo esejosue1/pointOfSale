@@ -86,3 +86,15 @@ def cart_detail(request):
     }
     
     return render(request, 'cart.html', context)
+
+def cart_add_quantity(request, product_id, quantity):
+    item = get_object_or_404(Product, id=product_id)
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=item, cart=cart)
+        cart_item.quantity = quantity
+
+    except ShoppingCart.DoesNotExist:
+        print('set quantity failed')
+
+    return redirect('cart:cart_detail')

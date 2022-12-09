@@ -38,7 +38,12 @@ def completeOrder(request):
             data.order_number = o_number
 
             data.save() #save in database
-            return render(request, "checkout.html")     #render back
+
+            context = {
+                'form': data,
+            }
+
+            return render(request, "confirmation.html", context)     #render back
         else:
             print(form.errors)  #error
        
@@ -46,3 +51,6 @@ def completeOrder(request):
  #home page for checkout form
 def orders(request):
     return render(request, "checkout.html")
+
+def confirmation(request):
+    return render(request, "confirmation.html")
