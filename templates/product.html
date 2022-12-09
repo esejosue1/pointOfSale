@@ -17,52 +17,50 @@
     <header>
       <div class="header">
         <a href="index.html">
-          <img src="images/logo.svg" id="logo" />
+          <img src="images/logo.svg" id="logo">
         </a>
       </div>
-
+  
       <div class="topnav">
-        <a id="cart" href="cart.html"
-          ><img class="bag-icon" src="images/bag.svg"
-        /></a>
-        <a id="account" href="login.html"
-          ><img class="user-icon" src="images/user.svg"
-        /></a>
+        <a id="cart" href="cart.html"><img class="bag-icon" src="images/bag.svg"></a>
+        <a id="account" href="account.html"><img class="user-icon" src="images/user.svg"></a>
         <!-- SEARCH BAR START -->
         <div class="search-container">
-          <input
-            id="searchbar"
-            type="text"
-            placeholder="Search..."
-            name="search"
-          />
-          <button class="search-button" type="submit">
-            <img src="images/search.svg" />
-          </button>
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search..." name="search">
+            <button class="search-button" type="submit"><img src="images/search.svg"></button>
+          </form>
         </div>
         <!-- ^ SEARCH BAR END -->
       </div>
+  
     </header>
     
    
     <main>
       <div class="grid-template">
         <div class="product-image">
-          <img src="images/img-placeholder.png">
+<<<<<<< HEAD
+          <img src="{{product.image.url}}">
         </div>
         <div class="information">
           <h1>{{product.product_name}}</h1>
           <p>
-            NVIDIA GeForce RTX 3070 (8GB GDDR6) Intel Core i5-12600K (10
-            Cores/16 Threads) Cooler Master 280mm AiO Liquid Cooler MSI Pro
-            B6600M-A CEC DDR4 WiFi Motherboard 16GB Kingston Fury RGB DDR4
-            3600MHz Memory (2x8GB) 1TB Solidigm P41 M.2 NVMe SSD 750W EVGA Power
-            Supply Windows 11 Home RGB Lighting Kit & Rear RGB Fan
+            {{product.description}}
           </p>
-          <h2>$29.99</h2>
+          <h2>${{product.price}}</h2>
+=======
+          <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}">
+        </div>
+        <div class="information">
+          <h1> {{product.product_name}}  </h1>
+          <p> {{ product.description }} </p>
+          <h2>${{ product.price }}  </h2>
+>>>>>>> 97374e06d8ea989f7852a67f19395332cb8c339d
         </div>
         <div class="logic">
-          <form>
+          <form action="{% url 'cart:cart_increment' product.id %}" method="post">
+            {% csrf_token %}
             <input type="number" id="amount" value="0" min="0">
             <input type="submit" id="cart-button" value="Add to Cart">
           </form>

@@ -22,6 +22,7 @@ urlpatterns = [
     path('', views.inventory, name='inventory'),
     path('<slug:category_slug>/', views.inventory, name="products_by_category"),
     #path("singleProductView/", views.singleProductView, name="singleProductView")
+     path('search/', views.search, name='search'),
     path("<slug:category_slug>/<slug:product_slug>/", views.productDetail, name="product_detail")
 
 ] 
