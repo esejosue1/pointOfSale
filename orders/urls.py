@@ -6,6 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.orders, name='orders'),  #home page
-    path('completeOrder/', views.completeOrder, name='completeOrder'),   #orderForm
-    path('completeOrder/confirmation/', views.confirmation, name='confirmation')
+    path('completeOrder/', views.completeOrder, name='completeOrder')   #orderForm
  ]
