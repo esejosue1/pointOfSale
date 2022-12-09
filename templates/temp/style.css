@@ -147,10 +147,6 @@ h1 {
   width: fit-content;
 }
 
-.product-container:hover {
-  /*     border-radius: 20px;
-      border: solid 2px #078FCD; */
-}
 
 .product-name {
   margin: 5px 0px;
