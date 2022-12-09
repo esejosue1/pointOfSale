@@ -147,6 +147,11 @@ h1 {
   width: fit-content;
 }
 
+.product-container:hover {
+  /*     border-radius: 20px;
+      border: solid 2px #078FCD; */
+}
+
 .product-name {
   margin: 5px 0px;
 }
@@ -196,7 +201,6 @@ h1 {
   text-align: center;
   color: black;
   background-color: #9bd511;
-  /* red #CD0737 */
   padding: 5px 15px;
   width: 100px;
   border-radius: 15px;
