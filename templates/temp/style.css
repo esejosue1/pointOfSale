@@ -41,9 +41,9 @@ header {
 #searchbar {
   height: 30px;
   float: left;
-  width: auto;
-  max-width: 800px;
-  min-width: 400px;
+  width: fit-content;
+  min-width: 420px;
+  margin: 0;
   border-radius: 15px;
   border: 2px solid black;
 }
@@ -136,7 +136,7 @@ h1 {
 /*   margin: 0 auto; */
 /*   display: flex; */
 /*   justify-content: center;
-    overflow-wrap: normal; */
+      overflow-wrap: normal; */
 /* } */
 
 .product-container {
@@ -145,6 +145,11 @@ h1 {
   padding: 15px;
   margin: 5px;
   width: fit-content;
+}
+
+.product-container:hover {
+  /*     border-radius: 20px;
+        border: solid 2px #078FCD; */
 }
 
 .product-name {
@@ -183,11 +188,10 @@ h1 {
 
 .add-to-cart:hover,
 .submit:hover,
-.recoverpassword:hover {
+.recoverpassword:hover,
+.checkout-button:hover {
   border: 2px solid #9bd511;
   background-color: white;
-  /*background-color: #078FCD; */
-  /* blue #078FCD */
 }
 
 .submit,
@@ -197,9 +201,21 @@ h1 {
   text-align: center;
   color: black;
   background-color: #9bd511;
-  /* red #CD0737 */
   padding: 5px 15px;
   width: 100px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+.checkout-button,
+.checkout-button:visited {
+  margin: 20px 0px;
+  font-size: 1rem;
+  text-align: center;
+  color: black;
+  background-color: #9bd511;
+  padding: 5px 15px;
+  width: 150px;
   border-radius: 15px;
   border: 2px solid transparent;
 }
@@ -211,7 +227,6 @@ h1 {
   text-align: center;
   color: black;
   background-color: #9bd511;
-  /* red #CD0737 */
   padding: 5px 15px;
   width: 125px;
   border-radius: 15px;
@@ -380,31 +395,41 @@ page-num:hover {
   border: 0px solid transparent;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 831px) and (min-width: 750px) {
   .header,
-  .topnav,
-  .search-container,
   .left,
   .right {
-    margin-top: 5px;
-    float: left;
     width: 100%;
     padding: 0;
+    margin-top: 5px;
   }
+  #logo,
+  .topnav a {
+    float: left;
+  }
+  /*   .header,
+    .topnav,
+    .search-container,
+    .left,
+    .right {
+      margin-top: 5px;
+      float: left;
+      width: 100%;
+      padding: 0;
+    } */
   #logo {
     margin: 0;
   }
   .search-container {
-    clear: none;
-    max-width: 500px;
+    min-width: fit-content;
+    max-width: fit-content;
     width: auto;
-    margin: 0 5px;
+    margin-left: 5px;
   }
 
   #searchbar {
-    /*         float: right; */
-    max-width: auto;
-    width: auto;
+    max-width: 500px;
+    min-width: 350px;
   }
   .search-button {
     float: left;
@@ -412,7 +437,7 @@ page-num:hover {
 
   #cart,
   #account {
-    float: right;
+    /*     float: right; */
     clear: none;
   }
   .product-container {
@@ -432,16 +457,23 @@ page-num:hover {
   }
 }
 
-@media screen and (max-width: 400px) {
-  #logo {
-    float: center;
-    clear: "";
-    max-width: 100%;
-  }
-  .topnav {
-    float: left;
+@media screen and (max-width: 750px) and (min-width: 650px) {
+  .header,
+  .left,
+  .right {
     width: 100%;
-    max-width: 100%;
+    padding: 0;
+    margin-top: 5px;
+  }
+  #logo,
+  .topnav a {
+    float: left;
+  }
+
+  .topnav {
+    float: right;
+    width: fit-content;
+    margin: 0;
   }
   .topnav a {
     float: right;
@@ -449,21 +481,84 @@ page-num:hover {
     overflow: visible;
   }
   .search-container {
-    float: right;
-    margin: 0 5px;
-    display: contents;
-    overflow: visible;
-  }
-  #searchbar {
-    float: left;
+    min-width: fit-content;
+    max-width: fit-content;
     width: auto;
-    display: flex;
-    min-width: 100px;
-    max-width: 200px;
+    margin-left: 5px;
+  }
+
+  #searchbar {
+    min-width: 250px;
   }
   .search-button {
     float: right;
     margin: 0 -15px;
     overflow: visible;
+  }
+  .category {
+    float: left;
+    width: fit-content;
+    margin: 10px;
+    text-align: center;
+  }
+  .category:hover {
+    width: fit-content;
+    padding: 5px 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .topnav,
+  .left,
+  .right {
+    width: 100%;
+    margin-top: 5px;
+  }
+  #logo {
+    float: left;
+    /*     min-width: fit-content; */
+  }
+
+  .topnav {
+    /*     float: none; */
+    /*     width: 100%; */
+    margin: 0;
+    padding: 5px;
+  }
+  .topnav a {
+    float: right;
+    margin: 0 5px;
+    overflow: visible;
+  }
+  .search-container {
+    min-width: fit-content;
+    max-width: fit-content;
+    width: auto;
+    margin-left: 5px;
+  }
+
+  #searchbar {
+    min-width: 150px;
+  }
+  .search-button {
+    float: right;
+    margin: 0 -15px;
+    overflow: visible;
+  }
+  .left {
+    margin: 0;
+  }
+  .category {
+    float: left;
+    width: fit-content;
+    margin: 10px;
+    text-align: center;
+  }
+  .category:hover {
+    width: fit-content;
+    padding: 5px 10px;
+  }
+  .content {
+    margin-top: 5px;
   }
 }
