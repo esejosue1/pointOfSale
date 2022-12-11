@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-{% load static %} {% block content %}
+{% load static %} 
+{% block content %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,34 +28,27 @@
   </head>
   <body>
     <header>
-      <div class="header">
-        <a href="index.html">
-          <img src="images/logo.svg" id="logo" />
-        </a>
-      </div>
+    <div class="header">
+      <a href="{% url 'home' %}">
+        <img src="{%static './images/logo.svg' %}" id="logo">
+      </a>
+    </div>
 
-      <div class="topnav">
-        <a id="cart" href="cart.html"
-          ><img class="bag-icon" src="images/bag.svg"
-        /></a>
-        <a id="account" href="login.html"
-          ><img class="user-icon" src="images/user.svg"
-        /></a>
-        <!-- SEARCH BAR START -->
-        <div class="search-container">
-          <input
-            id="searchbar"
-            type="text"
-            placeholder="Search..."
-            name="search"
-          />
-          <button class="search-button" type="submit">
-            <img src="images/search.svg" />
-          </button>
-        </div>
-        <!-- ^ SEARCH BAR END -->
+    <div class="topnav">
+      <a id="cart" href="{% url 'cart:cart_detail' %}"><img class="bag-icon" c></a>
+      <a id="account" href="account.html"><img class="user-icon" src="{% static './images/user.svg' %}"></a>
+
+      <!-- SEARCH BAR START -->
+      <div class="search-container">
+        <form action="" method='GET'>
+          <input type="text" placeholder="Search..." name="search">
+          <button class="search-button" type="submit"><img src="{%static './images/search.svg' %}"></button>
+        </form>
       </div>
-    </header>
+      <!-- ^ SEARCH BAR END -->
+    </div>
+
+  </header>
 
     <main>
       <div class="grid-template">
@@ -110,6 +104,7 @@
           },
         }).showToast();
       });
+
     </script>
     
     {% endblock script %}
