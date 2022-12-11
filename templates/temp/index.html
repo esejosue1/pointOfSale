@@ -1,178 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Store Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="search.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Store Home</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="search.css">
-</head>
+  <body>
+    <header>
+      <div class="topnav">
+        <!-- LOGO -->
+        <a href="index.html">
+          <img src="images/logo.svg" id="logo" />
+        </a>
+        <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+        <a id="cart" href="cart.html"
+          ><img class="bag-icon" src="images/bag.svg"
+        /></a>
+        <a id="account" href="login.html"
+          ><img class="user-icon" src="images/user.svg"
+        /></a>
+      </div>
 
-<body>
-
-  <header>
-    <a href="index.html">
-      <img src="images/logo.svg" id="logo">
-    </a>
-
-    <div class="topnav">
-      <a id="cart" href="cart.html"><img class="bag-icon" src="images/bag.svg"></a>
-      <a id="account" href="login.html"><img class="user-icon" src="images/user.svg"></a>
       <!-- SEARCH BAR START -->
       <div class="search-container">
         <form id="searchbar" action="">
-          <input id="search-input" type="search" placeholder="Search..." name="search">
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search..."
+            name="search"
+          />
           <i class="search-button"></i>
         </form>
       </div>
       <!-- ^ SEARCH BAR END -->
-
-      <!-- OLD SEARCH BAR START -->
-      <!--       <div class="search-container">
-        <input id="searchbar" type="text" placeholder="Search..." name="search">
-        <button class="search-button" type="submit"><img src="images/search.svg"></button>
-      </div> -->
-      <!-- ^ OLD SEARCH BAR END -->
-    </div>
-
-  </header>
-  <!-- START CONTENT WRAPPER -->
-  <div class="content">
-    <!-- START LEFT FILTER MENU -->
-    <div class="left">
-      <!-- START CATEGORIES -->
-      <!--       <h3>Categories</h3> -->
-      <a href="#" class="category">Category</a>
-      <a href="#" class="category">Category</a>
-      <a href="#" class="category">Category</a>
-      <a href="#" class="category">Category</a>
-    </div>
-    <!-- ^ END LEFT FILTER MENU -->
-    <!-- START RIGHT FOR PRODUCTS -->
-    <div class="right">
-      <div class="all-products">
-        <!-- <h1>Products</h1> -->
-        <!-- START SINGLE PRODUCT CONTAINER -->
-        <div class="product-container">
-          <!-- START PRODUCT IMAGE -->
-          <div class="product-image">
-            <a class="product-img-link" href="product.html">
-              <img src="images/img-placeholder.png">
-            </a>
-          </div>
-          <!-- ^ END PRODUCT IMAGE -->
-          <!-- START PRODUCT NAME -->
-          <div class="product-name">
-            <a class="product-name-link" href="product.html">Product Name</a>
-          </div>
-          <!-- ^ END PRODUCT NAME -->
-          <!-- START PRODUCT PRICE -->
-          <div class="product-price">$59.99</div>
-          <!-- ^ END PRODUCT PRICE -->
-          <!-- START ADD TO CART BUTTON -->
-          <button class="add-to-cart">Add to Cart</button>
-          <!-- ^ END ADD TO CART BUTTON -->
-        </div>
-        <!-- ^ END SINGLE PRODUCT CONTAINER -->
-
-
-
-
-        <!-- START MULTIPLE PRODUCT CONTAINTERS (NO COMMENTS) JUST FOR TESTING -->
-        <!-- Start New Product -->
-        <div class="product-container">
-          <div class="product-image">
-            <a class="product-img-link" href="product.html">
-              <img src="images/img-placeholder.png">
-            </a>
-          </div>
-          <div class="product-name">
-            <a class="product-name-link" href="product.html">Product Name</a>
-          </div>
-          <div class="product-price">$59.99</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Start New Product -->
-        <div class="product-container">
-          <div class="product-image">
-            <a class="product-img-link" href="product.html">
-              <img src="images/img-placeholder.png">
-            </a>
-          </div>
-          <div class="product-name">
-            <a class="product-name-link" href="product.html">Product Name</a>
-          </div>
-          <div class="product-price">$59.99</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Start New Product -->
-        <div class="product-container">
-          <div class="product-image">
-            <a class="product-img-link" href="product.html">
-              <img src="images/img-placeholder.png">
-            </a>
-          </div>
-          <div class="product-name">
-            <a class="product-name-link" href="product.html">Product Name</a>
-          </div>
-          <div class="product-price">$59.99</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Start New Product -->
-        <div class="product-container">
-          <div class="product-image">
-            <a class="product-img-link" href="product.html">
-              <img src="images/img-placeholder.png">
-            </a>
-          </div>
-          <div class="product-name">
-            <a class="product-name-link" href="product.html">Product Name</a>
-          </div>
-          <div class="product-price">$59.99</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Start New Product -->
-        <div class="product-container">
-          <div class="product-image">
-            <a class="product-img-link" href="product.html">
-              <img src="images/img-placeholder.png">
-            </a>
-          </div>
-          <div class="product-name">
-            <a class="product-name-link" href="product.html">Product Name</a>
-          </div>
-          <div class="product-price">$59.99</div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- ^ END MULTIPLE PRODUCT CONTAINERS -->
-        <br>
+    </header>
+    <!-- START CONTENT WRAPPER -->
+    <div class="content">
+      <!-- START CATEGORIES MENU -->
+      <div class="left">
+        <!-- START CATEGORIES -->
+        <a href="#" class="category">Category</a>
+        <a href="#" class="category">Category</a>
+        <a href="#" class="category">Category</a>
+        <a href="#" class="category">Category</a>
       </div>
+      <!-- ^ END LEFT FILTER MENU -->
+      <!-- START RIGHT FOR PRODUCTS -->
+      <div class="right">
+        <div class="all-products">
+          <!-- <h1>Products</h1> -->
+          <!-- START SINGLE PRODUCT CONTAINER -->
+          <div class="product-container">
+            <!-- START PRODUCT IMAGE -->
+            <div class="product-image">
+              <a class="product-img-link" href="product.html">
+                <img src="images/img-placeholder.png" />
+              </a>
+            </div>
+            <!-- ^ END PRODUCT IMAGE -->
+            <!-- START PRODUCT NAME -->
+            <div class="product-name">
+              <a class="product-name-link" href="product.html">Product Name</a>
+            </div>
+            <!-- ^ END PRODUCT NAME -->
+            <!-- START PRODUCT PRICE -->
+            <div class="product-price">$59.99</div>
+            <!-- ^ END PRODUCT PRICE -->
+            <!-- START ADD TO CART BUTTON -->
+            <button class="add-to-cart">Add to Cart</button>
+            <!-- ^ END ADD TO CART BUTTON -->
+          </div>
+          <!-- ^ END SINGLE PRODUCT CONTAINER -->
+
+          <!-- START MULTIPLE PRODUCT CONTAINTERS (NO COMMENTS) JUST FOR TESTING -->
+          <!-- Start New Product -->
+          <div class="product-container">
+            <div class="product-image">
+              <a class="product-img-link" href="product.html">
+                <img src="images/img-placeholder.png" />
+              </a>
+            </div>
+            <div class="product-name">
+              <a class="product-name-link" href="product.html">Product Name</a>
+            </div>
+            <div class="product-price">$59.99</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <!-- Start New Product -->
+          <div class="product-container">
+            <div class="product-image">
+              <a class="product-img-link" href="product.html">
+                <img src="images/img-placeholder.png" />
+              </a>
+            </div>
+            <div class="product-name">
+              <a class="product-name-link" href="product.html">Product Name</a>
+            </div>
+            <div class="product-price">$59.99</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <!-- Start New Product -->
+          <div class="product-container">
+            <div class="product-image">
+              <a class="product-img-link" href="product.html">
+                <img src="images/img-placeholder.png" />
+              </a>
+            </div>
+            <div class="product-name">
+              <a class="product-name-link" href="product.html">Product Name</a>
+            </div>
+            <div class="product-price">$59.99</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <!-- Start New Product -->
+          <div class="product-container">
+            <div class="product-image">
+              <a class="product-img-link" href="product.html">
+                <img src="images/img-placeholder.png" />
+              </a>
+            </div>
+            <div class="product-name">
+              <a class="product-name-link" href="product.html">Product Name</a>
+            </div>
+            <div class="product-price">$59.99</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <!-- Start New Product -->
+          <div class="product-container">
+            <div class="product-image">
+              <a class="product-img-link" href="product.html">
+                <img src="images/img-placeholder.png" />
+              </a>
+            </div>
+            <div class="product-name">
+              <a class="product-name-link" href="product.html">Product Name</a>
+            </div>
+            <div class="product-price">$59.99</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <!-- ^ END MULTIPLE PRODUCT CONTAINERS -->
+          <br />
+        </div>
+      </div>
+      <!-- ^ END RIGHT FOR PRODUCTS -->
     </div>
-    <!-- ^ END RIGHT FOR PRODUCTS -->
-  </div>
-  <!-- ^ END CONTENT WRAPPER -->
-  <!-- PRODUCT PAGE NAVIGATION -->
-  <div class="pg-nav">
-    <ul class="product-pages">
-      <li class="prev-page"><a href="?page=#"><span>&#8249; PREV</span></a></li>
-      <li class="current-page"><a href="?page=1"><span>1</span></a></li>
-      <li class="page-num"><a href="?page=2"><span>2</span></a></li>
-      <li class="page-num"><a href="?page=3"><span>3</span></a></li>
-      <li class="page-dots"><span>. . .</span></li>
-      <li class="page-num"><a href="?page=10"><span>10</span></a></li>
-      <li class="next-page"><a href="?page=2"><span>NEXT &#8250;</span></a></li>
-    </ul>
-  </div>
-  <!-- ^ END PRODUCT PAGE NAVIGATION -->
+    <!-- ^ END CONTENT WRAPPER -->
+    <!-- PRODUCT PAGE NAVIGATION -->
+    <div class="pg-nav">
+      <ul class="product-pages">
+        <li class="prev-page">
+          <a href="?page=#"><span>&#8249; PREV</span></a>
+        </li>
+        <li class="current-page">
+          <a href="?page=1"><span>1</span></a>
+        </li>
+        <li class="page-num">
+          <a href="?page=2"><span>2</span></a>
+        </li>
+        <li class="page-num">
+          <a href="?page=3"><span>3</span></a>
+        </li>
+        <li class="page-dots"><span>. . .</span></li>
+        <li class="page-num">
+          <a href="?page=10"><span>10</span></a>
+        </li>
+        <li class="next-page">
+          <a href="?page=2"><span>NEXT &#8250;</span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- ^ END PRODUCT PAGE NAVIGATION -->
 
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>Created by Group 1</p>
-  </div>
-
-</body>
-
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>Created by Group 1</p>
+    </div>
+  </body>
 </html>
