@@ -98,3 +98,25 @@ def cart_add_quantity(request, product_id, quantity):
         print('set quantity failed')
 
     return redirect('cart:cart_detail')
+
+ #home page for checkout form
+def cart_to_orders(request):
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+    except ShoppingCart.DoesNotExist:
+        cart = ShoppingCart.objects.create(cart_id=_cart_id(request))
+#    cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(is_active=True, cart=cart)
+
+    cart_subtotal = sum(item.itemtotal for item in cart_items)
+    cart_tax = cart_subtotal * (0.055) # tax rate (5.5%)
+    cart_shipping = 10 # shipping rate (flat $10)
+    cart_total = cart_subtotal + cart_tax + cart_shipping
+    context = {
+        'cart_items': cart_items,
+        'cart_subtotal': '{:.2f}'.format(cart_subtotal),
+        'cart_tax': '{:.2f}'.format(cart_tax),
+        'cart_shipping': '{:.2f}'.format(cart_shipping),
+        'cart_total': '{:.2f}'.format(cart_total),
+    }
+    return render(request, "checkout.html", context)
