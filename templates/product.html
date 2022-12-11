@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-{% load static %}
-{% block content %}
+{% load static %} {% block content %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/product.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
     <title>Product</title>
   </head>
@@ -43,12 +55,11 @@
         <!-- ^ SEARCH BAR END -->
       </div>
     </header>
-    
-   
+
     <main>
       <div class="grid-template">
         <div class="product-image">
-          <img src="images/img-placeholder.png">
+          <img src="{{product.image.url}}" />
         </div>
         <div class="information">
           <h1>{{product.product_name}}</h1>
@@ -59,21 +70,50 @@
             3600MHz Memory (2x8GB) 1TB Solidigm P41 M.2 NVMe SSD 750W EVGA Power
             Supply Windows 11 Home RGB Lighting Kit & Rear RGB Fan
           </p>
-          <h2>$29.99</h2>
+          <h2>${{product.price}}</h2>
         </div>
         <div class="logic">
           <form>
-            <input type="number" id="amount" value="0" min="0">
-            <input type="submit" id="cart-button" value="Add to Cart">
+            <input type="number" id="amount" value="0" min="0" />
+            <input type="submit" id="cart-button" value="Add to Cart" />
           </form>
         </div>
       </div>
     </main>
-    {% endblock %}
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    {% block script %}
 
-    <script  type="text/javascript" src="product.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    
+    <script>
+      const addtocart_button = document.getElementById("cart-button");
+
+      console.log("burrito");
+
+      addtocart_button.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        Toastify({
+          text: "Added to Cart",
+          duration: 1500,
+          newWindow: true,
+          close: true,
+    
+          gravity: "top",
+          position: "center",
+          stopOnFocus: true,
+          style: {
+            background: "green",
+          },
+        }).showToast();
+      });
+    </script>
+    
+    {% endblock script %}
 
   </body>
 </html>
+{% endblock %}

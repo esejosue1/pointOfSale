@@ -21,10 +21,11 @@ from . import views
 from django.conf.urls import include
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('', include('cart.urls')),  # added for cart
     path('inventory/', include('inventory.urls')),
-    path('orders/', include("orders.urls"))
+    path('orders/', include("orders.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
