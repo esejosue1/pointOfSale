@@ -7,5 +7,4 @@ from . import views
 urlpatterns = [
     path('', views.orders, name='orders'),  #home page
     path('completeOrder/', views.completeOrder, name='completeOrder')   #orderForm
-
  ]

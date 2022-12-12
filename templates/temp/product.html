@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="product.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <title>Product</title>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <a href="index.html">
+          <img src="images/logo.svg" id="logo" />
+        </a>
+      </div>
+
+      <div class="topnav">
+        <a id="cart" href="cart.html"
+          ><img class="bag-icon" src="images/bag.svg"
+        /></a>
+        <a id="account" href="login.html"
+          ><img class="user-icon" src="images/user.svg"
+        /></a>
+        <!-- SEARCH BAR START -->
+        <div class="search-container">
+          <input
+            id="searchbar"
+            type="text"
+            placeholder="Search..."
+            name="search"
+          />
+          <button class="search-button" type="submit">
+            <img src="images/search.svg" />
+          </button>
+        </div>
+        <!-- ^ SEARCH BAR END -->
+      </div>
+    </header>
+
+    
+    <main>
+      <div class="grid-template">
+        <div class="product-image">
+          <img src="images/img-placeholder.png">
+        </div>
+        <div class="information">
+          <h1>This Product</h1>
+          <p>
+            NVIDIA GeForce RTX 3070 (8GB GDDR6) Intel Core i5-12600K (10
+            Cores/16 Threads) Cooler Master 280mm AiO Liquid Cooler MSI Pro
+            B6600M-A CEC DDR4 WiFi Motherboard 16GB Kingston Fury RGB DDR4
+            3600MHz Memory (2x8GB) 1TB Solidigm P41 M.2 NVMe SSD 750W EVGA Power
+            Supply Windows 11 Home RGB Lighting Kit & Rear RGB Fan
+          </p>
+          <h2>$29.99</h2>
+        </div>
+        <div class="logic">
+          <form>
+<!-- <input type="number" id="quantity" min="1" value="1"> -->
+            <input class="buttons"
+            type="button" value="-" id="decrement">
+
+            <input type="number" id="value" value="1" min="1">
+
+            <input type="button" class="buttons" id="increment" value="+">
+            <br>
+
+            <input type="submit" class="add-to-cart"
+            class="add-to-cart" value="Add to Cart">
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer">
+      <p>Created by Group 1</p>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script  type="text/javascript" src="product.js"></script>
+    <script type="text/javascript" src="incrementor.js"></script>
+
+  </body>
+</html>

@@ -25,6 +25,7 @@ def cart(request):
 def cart1(request):  
     return render(request, "cart1.html", )
 
+
 '''
 def cart(request):
     items=Cart(request)

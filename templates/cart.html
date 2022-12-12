@@ -302,7 +302,7 @@
         {% with product=item.product%}
 
       <div class="product">
-        <a href="{{ product.get__absolute_url}}">
+        <a href="{{ product.get_url}}">
           <div class="product-image">
             <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}">
           </div>
@@ -355,7 +355,7 @@
           <div class="totals-value" id="cart-total"> {{ cart_total }} </div>
         </div>
       </div>
-      <a class="checkout-button" href="{% url 'orders' %}">
+      <a class="checkout-button" href="{% url 'cart:cart_to_orders' %}">
         <button class="checkout">Checkout</button>
       </a>
     </div>
