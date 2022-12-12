@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>View Cart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="search.css" />
+    <!--   <link rel="stylesheet" href="cart-style.css"> -->
+    <link rel="stylesheet" href="cart.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Store Home</title>
+  <body>
+    <header>
+      <div class="topnav">
+        <!-- LOGO -->
+        <a href="index.html">
+          <img src="images/logo.svg" id="logo" />
+        </a>
+        <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+        <a id="cart" href="cart.html"
+          ><img class="bag-icon" src="images/bag.svg"
+        /></a>
+        <a id="account" href="login.html"
+          ><img class="user-icon" src="images/user.svg"
+        /></a>
+      </div>
 
-  <link rel="stylesheet" href="cart-style.css">
-  <!--   <link rel="stylesheet" href="style.css"> -->
-</head>
-
-<body>
-
-  <header>
-    <div class="header">
-      <a href="index.html">
-        <img src="images/logo.svg" id="logo">
-      </a>
-    </div>
-
-    <div class="topnav">
-      <a id="cart" href="cart.html"><img class="bag-icon" src="images/bag.svg"></a>
-      <a id="account" href="login.html"><img class="user-icon" src="images/user.svg"></a>
       <!-- SEARCH BAR START -->
       <div class="search-container">
-        <input id="searchbar" type="text" placeholder="Search..." name="search">
-        <button class="search-button" type="submit"><img src="images/search.svg"></button>
+        <form id="searchbar" action="">
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search..."
+            name="search"
+          />
+          <i class="search-button"></i>
+        </form>
       </div>
       <!-- ^ SEARCH BAR END -->
-    </div>
+    </header>
 
-  </header>
-  <!-- START CONTENT WRAPPER -->
-  <div class="content">
-    <h1>Shopping Cart</h1>
+    <!-- START CONTENT WRAPPER -->
+    <!--   <div class="content"> -->
+    <!--     <h1>Shopping Cart</h1> -->
     <!-- Shopping Cart START -->
     <div class="shopping-cart">
+      <h1>Shopping Cart</h1>
       <!-- Shopping Cart Column Labels -->
       <div class="column-labels">
-        <label class="product-image">Product</label>
-        <label class="product-name-label"></label>
-        <label class="product-price">Price</label>
-        <label class="product-quantity">Qty</label>
-        <label class="product-removal"></label>
-        <label class="product-total-price">Total</label>
+        <label class="product-name-label">Products</label>
+        <!--       <label class="product-name-label"></label>
+      <label class="product-price">Price</label>
+      <label class="product-quantity">Qty</label>
+      <label class="product-removal"></label>
+      <label class="product-total-price">Total</label> -->
       </div>
       <!-- Shopping Cart Product Container START -->
       <div class="product">
-
         <div class="product-image">
           <a href="product.html">
-            <img src="/images/img-placeholder.png">
+            <img src="/images/img-placeholder.png" />
           </a>
         </div>
-        <div class="product-name"><a class="product-name-link" href="product.html">Product Name</a></div>
-
-        <div class="product-price">45.99</div>
-        <div class="product-quantity">
-          <!--                     <input type="number" id="quantity" min="1"> -->
-          <!--            -->
-          <!--           <input type="number" id="quantity" value="" min="1"> -->
-          <input type="number" id="quantity" min="1" value="10">
+        <div class="product-name">
+          <a class="product-name-link" href="product.html">Product Name</a>
+          <div class="product-price">45.99</div>
+          <div class="product-quantity">
+            <!-- QTY HERE -->
+          </div>
+          <!--         <div class="product-removal">
+        <button class="remove-product">Remove</button>
+      </div> -->
         </div>
+
+        <!--       <div class="product-quantity"> -->
+        <!--                     <input type="number" id="quantity" min="1"> -->
+        <!--            -->
+        <!--           <input type="number" id="quantity" value="" min="1"> -->
+        <!--         <input type="number" id="quantity" min="1" value="10"> -->
+        <!--       </div> -->
         <div class="product-removal">
           <button class="remove-product">Remove</button>
         </div>
@@ -93,12 +111,10 @@
       </a>
     </div>
     <!-- Shopping Cart END -->
-  </div>
-  <!-- ^ END CONTENT WRAPPER -->
-  <div class="footer">
-    <p>Created by Group 1</p>
-  </div>
-
-</body>
-
+    <!--   </div> -->
+    <!-- ^ END CONTENT WRAPPER -->
+    <div class="footer">
+      <p>Created by Group 1</p>
+    </div>
+  </body>
 </html>

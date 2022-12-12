@@ -7,8 +7,9 @@ html {
 body {
   font-family: Arial;
   /*   font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium'; */
-  margin: 80px;
+  margin: 60px;
   background-color: white;
+  box-shadow: 0px 10px 10px 5px #999;
 }
 
 header {
@@ -77,8 +78,8 @@ h1 {
 }
 
 .category {
-  margin: 0 auto;
   float: left;
+  margin: 0 auto;
   /*   display: block; */
   color: black;
   /*   font-weight: 600; */
@@ -86,12 +87,12 @@ h1 {
   /*   margin: 5px 0px; */
   text-decoration: none;
   /*   padding: 5px 0px; */
-  padding: 5px 15px 0;
+  padding: 0px 10px 5px;
 }
 
 .category:hover {
-  padding-bottom: 10px;
-  border-bottom: solid #999 1px;
+  padding-bottom: 15px;
+  border-bottom: solid black 1px;
   border-radius: 1px;
   /*   border-bottom: #999; */
   /*   box-shadow: 0px 10px 10px -5px #999; */
@@ -124,7 +125,7 @@ h1 {
 
 .product-name,
 .product-price {
-  margin: 10px 10px 10px;
+  margin: 10px 15px;
 }
 
 .product-name a:hover {
@@ -184,8 +185,8 @@ h1 {
   margin: 20px 0px;
   font-size: 1rem;
   text-align: center;
-  color: black;
-  background-color: #9bd511;
+  color: white;
+  background-color: black;
   padding: 5px 15px;
   width: 100px;
   border: 2px solid transparent;
@@ -208,8 +209,8 @@ h1 {
   margin: 20px 0px;
   font-size: 1rem;
   text-align: center;
-  color: black;
-  background-color: #9bd511;
+  color: white;
+  background-color: black;
   padding: 5px 15px;
   width: 125px;
   border: 2px solid transparent;
@@ -574,8 +575,8 @@ h1 {
   margin: 20px 0px;
   font-size: 1rem;
   text-align: center;
-  color: black;
-  background-color: #9bd511;
+  color: white;
+  background-color: black;
   padding: 5px 15px;
   width: 125px;
   border: 2px solid transparent;
