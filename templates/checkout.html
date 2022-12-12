@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% block content %}
 <html lang="en">
 
 <head>
@@ -38,7 +40,7 @@
       <h1>Checkout</h1>
       <h2>Shipping Information</h2>
     </div>
-<form action = "{% url 'completeOrder' %}" method = "POST">
+<form action = "{% url 'completeOrder' %}" method = "post">
   {% csrf_token %}
 
     <div class="sname">
@@ -184,7 +186,7 @@
 
         }).render('#paypal-button-container');
       </script>
-      <button type = "submit" class="checkout-button">Place Order</button>
+      <button type= "submit" onclick="location.href = '/completeOrder'">Place Order</button>
     </div>
  </div>
 
@@ -193,6 +195,7 @@
   <div class="footer">
     <!--     <h2>Footer</h2> -->
     <p>Created by Group 1</p>
+    <p>Testing info - Grand Total: ${{ cart_total }}</p>
   </div>
 
 </body>
@@ -200,3 +203,4 @@
 </html>
 
 </html>
+{% endblock %}
