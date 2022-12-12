@@ -1,38 +1,34 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width">
     <title>Store Home</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="search.css" />
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link rel="stylesheet" href="{%static 'css/search.css' %}">
   </head>
 
   <body>
     <header>
       <div class="topnav">
         <!-- LOGO -->
-        <a href="index.html">
-          <img src="images/logo.svg" id="logo" />
+        <a href="{% url 'home' %}">
+          <img src="{%static './images/logo.svg' %}" id="logo">
         </a>
         <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
-        <a id="cart" href="cart.html"
-          ><img class="bag-icon" src="images/bag.svg"
+        <a id="cart" href="{% url 'cart:cart_detail' %}">
+          <img class="bag-icon" src="{%static './images/bag.svg' %}"
         /></a>
         <a id="account" href="login.html"
-          ><img class="user-icon" src="images/user.svg"
+          ><img class="user-icon" src="{% static './images/user.svg' %}"
         /></a>
       </div>
 
       <!-- SEARCH BAR START -->
       <div class="search-container">
         <form id="searchbar" action="">
-          <input
-            id="search-input"
-            type="search"
-            placeholder="Search..."
-            name="search"
-          />
+          <input id="search-input" type="search" placeholder="Search..." name="search"/>
           <i class="search-button"></i>
         </form>
       </div>
@@ -43,106 +39,45 @@
       <!-- START CATEGORIES MENU -->
       <div class="left">
         <!-- START CATEGORIES -->
-        <a href="#" class="category">Category</a>
-        <a href="#" class="category">Category</a>
-        <a href="#" class="category">Category</a>
-        <a href="#" class="category">Category</a>
+        {% for category in links%}
+        <a href="{{category.get_url}}" class="category">{{category.category_name}}</a>
+        {% endfor %}
       </div>
       <!-- ^ END LEFT FILTER MENU -->
       <!-- START RIGHT FOR PRODUCTS -->
       <div class="right">
         <div class="all-products">
-          <!-- <h1>Products</h1> -->
+          {% block content %}
+
           <!-- START SINGLE PRODUCT CONTAINER -->
+          {% for product in products %}
           <div class="product-container">
             <!-- START PRODUCT IMAGE -->
             <div class="product-image">
-              <a class="product-img-link" href="product.html">
-                <img src="images/img-placeholder.png" />
+              <a class="product-img-link" href="{{product.get_url}}">
+                <img src="{{product.image.url}}" />
               </a>
             </div>
             <!-- ^ END PRODUCT IMAGE -->
             <!-- START PRODUCT NAME -->
             <div class="product-name">
-              <a class="product-name-link" href="product.html">Product Name</a>
+              <a class="product-name-link" href="{{product.get_url}}">{{product.product_name}}</a>
             </div>
             <!-- ^ END PRODUCT NAME -->
             <!-- START PRODUCT PRICE -->
-            <div class="product-price">$59.99</div>
+            <div class="product-price">${{product.price}}</div>
             <!-- ^ END PRODUCT PRICE -->
             <!-- START ADD TO CART BUTTON -->
-            <button class="add-to-cart">Add to Cart</button>
+            <form action="{% url "cart:cart_add" product.id %}" method="post" class="add-to-cart">
+              {% csrf_token %}
+              {{ cart_product_form }}
+              <input type="submit" class="add-to-cart" value="Add to Cart">
+          </form>
             <!-- ^ END ADD TO CART BUTTON -->
           </div>
+          {% endfor %}
           <!-- ^ END SINGLE PRODUCT CONTAINER -->
 
-          <!-- START MULTIPLE PRODUCT CONTAINTERS (NO COMMENTS) JUST FOR TESTING -->
-          <!-- Start New Product -->
-          <div class="product-container">
-            <div class="product-image">
-              <a class="product-img-link" href="product.html">
-                <img src="images/img-placeholder.png" />
-              </a>
-            </div>
-            <div class="product-name">
-              <a class="product-name-link" href="product.html">Product Name</a>
-            </div>
-            <div class="product-price">$59.99</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <!-- Start New Product -->
-          <div class="product-container">
-            <div class="product-image">
-              <a class="product-img-link" href="product.html">
-                <img src="images/img-placeholder.png" />
-              </a>
-            </div>
-            <div class="product-name">
-              <a class="product-name-link" href="product.html">Product Name</a>
-            </div>
-            <div class="product-price">$59.99</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <!-- Start New Product -->
-          <div class="product-container">
-            <div class="product-image">
-              <a class="product-img-link" href="product.html">
-                <img src="images/img-placeholder.png" />
-              </a>
-            </div>
-            <div class="product-name">
-              <a class="product-name-link" href="product.html">Product Name</a>
-            </div>
-            <div class="product-price">$59.99</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <!-- Start New Product -->
-          <div class="product-container">
-            <div class="product-image">
-              <a class="product-img-link" href="product.html">
-                <img src="images/img-placeholder.png" />
-              </a>
-            </div>
-            <div class="product-name">
-              <a class="product-name-link" href="product.html">Product Name</a>
-            </div>
-            <div class="product-price">$59.99</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <!-- Start New Product -->
-          <div class="product-container">
-            <div class="product-image">
-              <a class="product-img-link" href="product.html">
-                <img src="images/img-placeholder.png" />
-              </a>
-            </div>
-            <div class="product-name">
-              <a class="product-name-link" href="product.html">Product Name</a>
-            </div>
-            <div class="product-price">$59.99</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <!-- ^ END MULTIPLE PRODUCT CONTAINERS -->
           <br />
         </div>
       </div>
@@ -180,4 +115,5 @@
       <p>Created by Group 1</p>
     </div>
   </body>
+  {% endblock %}
 </html>
