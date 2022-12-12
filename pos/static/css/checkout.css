@@ -1,0 +1,23 @@
+.checkout-button:hover {
+    border: 3px solid black;
+    background-color: white;
+    color: black;
+  }
+
+  /* Checkout */
+.checkout {
+    float: right;
+    margin: 10px 4% 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    background-color: black;
+    padding: 5px 25px;
+    border: 3px solid transparent;
+  }
+  
+  .checkout:hover {
+    border: 3px solid black;
+    background-color: white;
+    color: black;
+  }

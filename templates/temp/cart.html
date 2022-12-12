@@ -1,97 +1,182 @@
 <!DOCTYPE html>
-{% load static %}
 {% block content %}
+{% load static %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>View Cart</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/search.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
-    
 
-  </head>
+<head>
+  <style>
+    .lalign {
+      float: left;
+      clear: none;
+    }
 
-  <body>
+
+    .search-container {
+      width: 100%;
+      float: center;
+      clear: both;
+      margin-top: 80px;
+    }
+
+    #searchbar {
+      position: relative;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 1s;
+      width: 30px;
+      height: 30px;
+      background: white;
+      box-sizing: border-box;
+      border-radius: 25px;
+      border: 3px solid black;
+      padding: 0 5px;
+    }
+
+    #search-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 24px;
+      outline: 0;
+      border: 0;
+      display: none;
+      border-radius: 25px;
+      padding: 0 10px;
+    }
+
+    .search-button {
+      box-sizing: border-box;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      color: #07051a;
+      text-align: center;
+      transition: all 1s;
+      background-image: url("{%static 'images/search.svg'%}");
+      background-size: 15px;
+      background-position: 10px 3.5px;
+      background-repeat: no-repeat;
+    }
+
+    #searchbar:hover {
+      width: 40%;
+    }
+
+    #searchbar:hover #search-input {
+      display: block;
+    }
+
+    #searchbar:hover .search-button {
+      background-image: url("{%static 'images/search.svg'%}");
+      background-size: 15px;
+      background-position: 5px 3.5px;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>View Cart</title>
+  <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  <link rel="stylesheet" href="{% static 'css/cart.css'%}" />
+</head>
+
+<body>
     <header>
-      <div class="topnav">
-        <!-- LOGO -->
-        <a href="{% url 'home' %}">
-          <img src="{% static 'images/logo.svg' %}" id="logo" />
-        </a>
-        <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
-        <a id="cart" href="{% url 'cart:cart_detail' %}">
-          <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
-        <a id="account" href="login.html">
-          <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
-      </div>
+        <div class="topnav">
+          <!-- LOGO -->
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/logo.svg' %}" id="logo" />
+          </a>
+          <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+          <a id="cart" href="{% url 'cart:cart_detail' %}">
+            <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
+          <a id="account" href="login.html">
+            <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
+        </div>
+  
+        <!-- SEARCH BAR START -->
+        <div class="search-container">
+          <form id="searchbar" action="">
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Search..."
+              name="search"
+            />
+            <i class="search-button"></i>
+          </form>
+        </div>
+        <!-- ^ SEARCH BAR END -->
+      </header>
 
-      <!-- SEARCH BAR START -->
-      <div class="search-container">
-        <form id="searchbar" action="">
-          <input
-            id="search-input"
-            type="search"
-            placeholder="Search..."
-            name="search"
-          />
-          <i class="search-button"></i>
-        </form>
-      </div>
-      <!-- ^ SEARCH BAR END -->
-    </header>
+  <!-- START CONTENT WRAPPER -->
 
-    <!-- START CONTENT WRAPPER -->
-    <!--   <div class="content"> -->
-    <!--     <h1>Shopping Cart</h1> -->
-    <!-- Shopping Cart START -->
-    <div class="shopping-cart">
-      <h1>Shopping Cart</h1>
-      <!-- Shopping Cart Column Labels -->
-      <div class="column-labels">
-        <label class="product-name-label">Products</label>
-        <!--       <label class="product-name-label"></label>
-      <label class="product-price">Price</label>
-      <label class="product-quantity">Qty</label>
-      <label class="product-removal"></label>
-      <label class="product-total-price">Total</label> -->
-      </div>
-      <!-- Shopping Cart Product Container START -->
-      {% for item in cart_items %}
-      {% with product=item.product%}
+  <!-- Shopping Cart START -->
+  <div class="shopping-cart">
+    <h1>Shopping Cart</h1>
+    <!-- Shopping Cart Column Labels -->
+    <div class="column-labels">
+      <label class="product-name-label">Products</label>
+    </div>
 
-      <div class="product">
+
+    <!-- ***** Product Container START -->
+    {% for item in cart_items %}
+    {% with product=item.product%}
+    <div class="product">
+        <div class="product-image">
         <a href="{{ product.get_url}}">
-          <div class="product-image">
-            <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}">
-          </div>
-          <div class="product-name">{{ product.product_name }}</div>
+          <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static '/images/img-placeholder.png' %} {% endif %}" />
         </a>
-        <div class="product-price">{{ product.price }}</div>
-        <div class="product-quantity"></div>
-        {{ item.quantity }}
-          <!--         <div class="product-removal">
-        <button class="remove-product">Remove</button>
-      </div> -->
+      </div>
+      <!--  Product-Info Start -->
+      <div class="product-name">
+        <a class="product-name-link" href="product.html">{{ product.product_name }}</a>
+        <!-- Individual Unit Price -->
+        <div class="product-price">{{ product.price }}
+          <!-- Total Price -->
+          <div class="product-total-price">{{ item.itemtotal }}</div>
         </div>
 
-        <!--       <div class="product-quantity"> -->
-        <!--                     <input type="number" id="quantity" min="1"> -->
-        <!--            -->
-        <!--           <input type="number" id="quantity" value="" min="1"> -->
-        <!--         <input type="number" id="quantity" min="1" value="10"> -->
-        <!--       </div> -->
-        <div class="product-removal">
-          <button class="remove-product">Remove</button>
+        <!-- Quantities -->
+        <div class="product-quantity">
+          <form action="{% url 'cart:cart_decrement' product.id %}" class="lalign" method="post">
+            {% csrf_token %}
+            <input type="submit" class="qty-buttons" value="&minus;" id="decrement">
+            </form>
+
+            <!--  QTY VALUE  -->
+            <span id="pro-qty">{{ item.quantity }}</span>
+
+            <form action="{% url 'cart:cart_increment' product.id %}" class="lalign" method="post">
+                {% csrf_token %}
+                <input type="submit" class="qty-buttons" id="increment" value="&plus;" action="{% url 'cart:cart_increment' product.id %}">
+            </form>
         </div>
-        <div class="product-total-price">45.99</div>
+
+        <div class="product-removal">
+            <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                {% csrf_token %}
+              <input type="submit" class="remove-product" value="Remove">
+            </form>
+        </div>
       </div>
-      <!-- Shopping Cart Product Container END -->
-        {% endwith %}
-        {% endfor %}
-      <!-- Totals -->
-      <div class="totals">
+      <!-- ^ Product Info End -->
+
+    </div>
+    {% endwith %}
+    {% endfor %}
+    <!-- *** Product Container END -->
+
+    <!-- Totals -->
+    <div class="totals">
         <div class="totals-item">
           <label>Subtotal</label>
           <div class="totals-value" id="cart-subtotal"> {{ cart_subtotal }} </div>
@@ -113,12 +198,13 @@
         <button class="checkout">Checkout</button>
       </a>
     </div>
-    <!-- Shopping Cart END -->
-    <!--   </div> -->
-    <!-- ^ END CONTENT WRAPPER -->
-    <div class="footer">
-      <p>Created by Group 1</p>
-    </div>
-  </body>
+  <!-- Shopping Cart END -->
+
+  <!-- ^ END CONTENT WRAPPER -->
+  <div class="footer">
+    <p>Created by Group 1</p>
+  </div>
+</body>
+
 </html>
 {% endblock %}

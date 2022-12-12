@@ -2,106 +2,218 @@
 {% load static %} {% block content %}
 <html lang="en">
   <head>
+    <style>
+      .pimage img {
+        float: left;
+        width: 30%;
+        height: auto;
+        margin: 10px 30px;
+      }
+      
+      .pinfo {
+        float: left;
+        margin: 10px 30px;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
+      
+      #pname {
+        float: left;
+        text-align: left;
+        font-size: 24pt;
+        margin: 0px 5px 15px 10px;
+      }
+      
+      #pdesc, #pprice {
+        float: left;
+        clear: both;
+        margin: 15px;
+      }
+      
+      #pprice {
+        font-weight: 600;
+      }
+      
+      .p-qty {
+        clear: both;
+        float: left;
+        margin: 10px 5px;
+      }
+      
+      .lalign {
+        float: left;
+        clear: none;
+      }
+      .qty-buttons {
+        float: left;
+        text-align: center;
+        color: white;
+        background-color: black;
+        border: 2px solid transparent;
+        width: 25px;
+        height: 25px;
+      }
+      
+      .qty-buttons:hover {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+      }
+      
+      #minus, #plus {
+        margin: 10px;
+      }
+      
+      #pqty {
+        float: left;
+        padding-top: 14px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      #addcart {
+        float: left;
+        clear: both;
+      }
+      
+      .lalign {
+        float: left;
+        clear: none;
+      }
+  
+  
+      .search-container {
+        width: 100%;
+        float: center;
+        clear: both;
+        margin-top: 80px;
+      }
+  
+      #searchbar {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 1s;
+        width: 30px;
+        height: 30px;
+        background: white;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 3px solid black;
+        padding: 0 5px;
+      }
+  
+      #search-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 24px;
+        outline: 0;
+        border: 0;
+        display: none;
+        border-radius: 25px;
+        padding: 0 10px;
+      }
+  
+      .search-button {
+        box-sizing: border-box;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        color: #07051a;
+        text-align: center;
+        transition: all 1s;
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 10px 3.5px;
+        background-repeat: no-repeat;
+      }
+  
+      #searchbar:hover {
+        width: 40%;
+      }
+  
+      #searchbar:hover #search-input {
+        display: block;
+      }
+  
+      #searchbar:hover .search-button {
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 5px 3.5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+    </style>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/product.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-
-    <title>Product</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Cart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/cart.css'%}" />
   </head>
-  <body>
-    <header>
-      <div class="header">
-        <a href="{% url 'home' %}">
-          <img src="{%static './images/logo.svg' %}" id="logo">
-        </a>
-      </div>
-  
-      <div class="topnav">
-        <a id="cart" href="{% url 'cart:cart_detail' %}"><img class="bag-icon" src="{% static './images/bag.svg'%}"></a>
-        <a id="account" href="account.html"><img class="user-icon" src="{% static './images/user.svg' %}"></a>
-  
-        <!-- SEARCH BAR START -->
-        <div class="search-container">
-          <form action="" method='GET'>
-            <input type="text" placeholder="Search..." name="search">
-            <button class="search-button" type="submit"><img src="{%static './images/search.svg' %}"></button>
+      
+      <body>
+          <header>
+              <div class="topnav">
+                <!-- LOGO -->
+                <a href="{% url 'home' %}">
+                  <img src="{% static 'images/logo.svg' %}" id="logo" />
+                </a>
+                <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+                <a id="cart" href="{% url 'cart:cart_detail' %}">
+                  <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
+                <a id="account" href="login.html">
+                  <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
+              </div>
+        
+              <!-- SEARCH BAR START -->
+              <div class="search-container">
+                <form id="searchbar" action="">
+                  <input
+                    id="search-input"
+                    type="search"
+                    placeholder="Search..."
+                    name="search"
+                  />
+                  <i class="search-button"></i>
+                </form>
+              </div>
+              <!-- ^ SEARCH BAR END -->
+            </header>
+
+    <div class="content">
+        <div class="pimage">
+          <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static '/images/img-placeholder.png' %} {% endif %}" />
+        </div>
+        <div class="pinfo">
+          <div id="pname">{{product.product_name}}</div>
+          <div id="pprice">${{product.price}}</div>
+          <div id="pdesc">{{product.description}}</div>
+        <div class="p-qty">
+            <form class="lalign">
+              <input type="button" class="qty-buttons" value="&minus;" id="minus">
+              </form>
+              <!--  QTY VALUE  -->
+              <span id="pqty">function here</span>
+              <form class="lalign">
+              <input type="button" class="qty-buttons" id="plus" value="&plus;">
           </form>
         </div>
-        <!-- ^ SEARCH BAR END -->
-      </div>
-  
-    </header>
-
-    <main>
-      <div class="grid-template">
-        <div class="product-image">
-          <img src="{{product.image.url}}" />
-        </div>
-        <div class="information">
-          <h1>{{product.product_name}}</h1>
-          <p>
-            {{product.description}}
-          </p>
-          <h2>${{product.price}}</h2>
-        </div>
-        <div class="logic">
-          <form>
-            <input type="number" id="amount" value="0" min="0" />
-            <input type="submit" id="cart-button" value="Add to Cart" />
+          <form id="addcart">
+            <input type="submit" class="add-to-cart" value="Add to Cart" />
           </form>
         </div>
       </div>
-    </main>
 
-    {% block script %}
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
-    ></script>
-    
-    <script>
-      const addtocart_button = document.getElementById("cart-button");
+      <div class="footer">
+        <p>Created by Group 1</p>
+      </div>
 
-      console.log("burrito");
-
-      addtocart_button.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        Toastify({
-          text: "Added to Cart",
-          duration: 1500,
-          newWindow: true,
-          close: true,
-    
-          gravity: "top",
-          position: "center",
-          stopOnFocus: true,
-          style: {
-            background: "green",
-          },
-        }).showToast();
-      });
-    </script>
-    
-    {% endblock script %}
 
   </body>
 </html>
