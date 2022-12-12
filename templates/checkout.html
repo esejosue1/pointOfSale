@@ -148,7 +148,7 @@
       <!--</div>-->
 
       <!-- Include the PayPal JavaScript SDK -->
-      <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+      <script src="https://www.paypal.com/sdk/js?client-id=AZ2BqA-sJL4GHOUKOvEOgCEyZP5Y4eTGxv_dj0BMizN120CeQcG80BYymletNBgGLAmRskpwLmeiEGnZ&currency=USD"></script>
 
       <script>
         // Render the PayPal button into #paypal-button-container
@@ -169,6 +169,7 @@
           onApprove: function (data, actions) {
             return actions.order.capture().then(function (orderData) {
               // Successful capture! For demo purposes:
+              console.log(details);
               console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
               var transaction = orderData.purchase_units[0].payments.captures[0];
               alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');

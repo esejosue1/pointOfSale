@@ -45,7 +45,7 @@
                   style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
 
                   <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
-                    Thank You Nacho Libre For Your Order!
+                    Thank You {{form.first_name}} {{form.last_name}} For Your Order!
                   </h2>
                 </div>
               </td>
@@ -72,7 +72,7 @@
                     <td>
                       <div class="confirmation number" width="25%" align="left" bgcolor="#eeeeee"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                        2345678
+                        {{form.last_name}}
                       </div>
                     </td>
                   </tr>
