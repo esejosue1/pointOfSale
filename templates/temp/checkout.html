@@ -226,7 +226,7 @@
       </div>
     </div>
 
-    <div id="paypal-button-container" style="width:17px;">
+    <div id="paypal-button-container">
       <br>
       <div class="head2">Payment Options</div>
 
@@ -269,9 +269,12 @@
         }).render('#paypal-button-container');
       </script>
     </div>
-    <div>
-      <button type= "submit" class="checkout" onclick="{% url 'orders:completeOrder' cart_subtotal cart_tax cart_shipping cart_total %}">Place Order</button>
+    <div style="display:flex; margin: 0 auto;">
+      <button style="display:grid; margin: 0 auto;" type="submit" class="checkout" onclick="/orders/completeOrder/318.00/17.49/10.00/345.49/">Place Order</button>
     </div>
+
+
+
   </div>
   <!-- ^ END CONTENT WRAPPER -->
   <div class="footer">

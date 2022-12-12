@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+        
+          body {
+            font-family: Arial;
+            padding: 0% 5% 0% 5%;
+            /*       background: #f1f1f1; */
+            /*       background-color: #ffffff; */
+          }
+        
+          /* Header/Blog Title */
+          header {
+            /*       padding: 10px; */
+            text-align: center;
+            background-color: #ffffff;
+          }
+        
+          #logo {
+            float: left;
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
+          }
+        
+          /*     #logo:hover {
+            background-color: #333;
+          } */
+        
+        
+        
+          /* Style the top navigation bar */
+          .topnav {
+            overflow: hidden;
+            /*       color: black; */
+            /*       background-color: #333; */
+          }
+        
+          /* Style the topnav links */
+          .topnav a {
+            float: left;
+            display: block;
+            color: #000;
+            text-align: center;
+            height: 50px;
+            padding: 25px 15px;
+            text-decoration: none;
+          }
+        
+          /* Change color on hover */
+          .topnav a:hover {
+            /*       background-color: #ddd; */
+            color: black;
+          }
+        
+          .topnav .search-container {
+            float: right;
+            height: 50px;
+            padding: 25px 15px;
+            /*       border-radius: 5px;
+            border: 0px solid transparent; */
+            /*       height: 25px; */
+            /*       width: 50px; */
+          }
+        
+          .topnav input[type=text] {
+            /*       padding: 2px; */
+            border-radius: 10px;
+            border: 0px solid transparent;
+            /*       padding: 6px;
+            margin-top: 8px; */
+            /*       margin:  */
+            font-size: 1rem;
+            /*       border: none; */
+          }
+        
+        
+        
+          .topnav .search-container .search-button {
+            float: right;
+            border: 0px solid transparent;
+            background-color: transparent;
+            /*       padding: 6px 10px; */
+            /*       margin-top: 8px; */
+            /*       margin-right: 16px; */
+            /*       background: #ddd; */
+            /*       font-size: 17px; */
+            /*       border: none; */
+            cursor: pointer;
+          }
+        
+        
+        
+          .search-container button img {
+            height: 20px;
+            width: auto;
+          }
+        
+          #account,
+          #cart {
+            float: right;
+            /*       height: 50px; */
+          }
+        
+          .user-icon,
+          .bag-icon {
+            height: 25px;
+            width: auto;
+            /*       padding: 5px; */
+          }
+        
+          /* Create two unequal columns that floats next to each other */
+          /* Left column */
+          /*     .leftcolumn { */
+          .left {
+            float: left;
+            width: 20%;
+          }
+        
+          /* Right column */
+          /*     .rightcolumn { */
+          .right {
+            float: left;
+            width: 80%;
+            /*       background-color: #f1f1f1; */
+            /*       padding-left: 20px; */
+          }
+        
+          h1 {
+            font-size: 2rem;
+            font-weight: 100;
+            margin: 10px;
+          }
+        
+          .left h2 {
+            font-weight: 100;
+            margin-top: 75px;
+          }
+        
+          .category {
+            float: left;
+            width: 100%;
+            display: block;
+            /*       color: #078FCD; */
+            color: black;
+            font-weight: 600;
+            text-align: left;
+            margin: 5px 0px;
+            text-decoration: none;
+            padding: 5px 0px;
+          }
+        
+          .category:hover {
+            padding: 5px 15px;
+            background-color: black;
+            color: white;
+          }
+        
+          /* Add a card effect for articles */
+          .product-container {
+            float: left;
+            background-color: white;
+            padding: 15px;
+            margin: 10px;
+            width: fit-content;
+            /*       padding: 20px; */
+            /*       margin-top: 20px; */
+          }
+        
+          .product-name {
+            margin: 5px 0px;
+          }
+        
+          .product-name-link {
+            text-decoration: none;
+            color: #078FCD;
+            font-weight: 600;
+        
+          }
+        
+        
+          .add-to-cart {
+            /*       align-self: center; */
+            margin: 10px auto 0px;
+            font-size: 1rem;
+            text-align: center;
+            color: black;
+            background-color: #9BD511;
+            /* green #9BD511 */
+            padding: 5px 25px;
+            border-radius: 15px;
+            border: 0px solid transparent;
+          }
+        
+          .add-to-cart:hover {
+            background-color: #078FCD;
+            /* blue #078FCD */
+          }
+        
+          /* Clear floats after the columns */
+          /*     .row:after { */
+          .content:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+        
+          /* Footer */
+          .footer {
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+            margin-top: 20px;
+          }
+        
+        
+          /********* START OLD *********/
+        
+          .product-img-link img {
+            height: 150px;
+            /*       width: auto; */
+            border-radius: 5px;
+            border: 0px solid transparent;
+          }
+        
+        
+          /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+          @media screen and (max-width: 800px) {
+        
+            /*       .leftcolumn,
+            .rightcolumn { */
+            .left,
+            .right {
+              width: 100%;
+              padding: 0;
+            }
+          }
+        
+          /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+          @media screen and (max-width: 400px) {
+            .topnav a {
+              float: none;
+              width: 100%;
+            }
+          }
+        
+        
+    </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header">
+      <a href="{% url 'home' %}">
+        <img src="{%static './images/logo.svg' %}" id="logo">
+      </a>
+    </div>
+
+    <div class="topnav">
+      <a id="cart" href="{% url 'cart:cart_detail' %}"><img class="bag-icon" src="{%static './images/bag.svg' %}"></a>
+      <a id="account" href="account.html"><img class="user-icon" src="{% static './images/user.svg' %}"></a>
+      <!-- SEARCH BAR START -->
+      <div class="search-container">
+        <form action="{% url 'search' %}" method='get'>
+          <input type="text" placeholder="Search..." name="search">
+          <button class="search-button" type="submit"><img src="{%static './images/search.svg' %}"></button>
+        </form>
+      </div>
+      <!-- ^ SEARCH BAR END -->
+    </div>
+
+  </header>
+  <!-- START CONTENT WRAPPER -->
+  <div class="content">
+    <!-- START LEFT FILTER MENU -->
+    <div class="left">
+      <h2>Filters</h2>
+      <!-- START CATEGORIES -->
+      <h3>Menu</h3>
+      
+      {% for category in links%}
+      <a href="{{category.get_url}}" class="category">{{category.category_name}}</a>
+      {% endfor %}
+    
+
+    </div>
+    <!-- ^ END LEFT FILTER MENU -->
+
+    <!-- START RIGHT FOR PRODUCTS -->
+    <div class="right">
+    <!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+      <!-- In we are searching  -->
+      {%if 'search' in request.path %}
+        
+        <h2 class="title-page">Search Result:</h2>
+        
+      {%else%}
+        <h2 class="title-page">Our Store</h2>
+      {%endif%}
+    </div>
+    <!-- container //  -->
+  </section>
+  
+  <!-- ========================= SECTION INTRO END// ========================= -->
+      <h1>Products</h1>
+      {% block content %}
+      <!-- START SINGLE PRODUCT CONTAINER -->
+      {% for product in products %}
+      <div class="product-container">
+        <!-- START PRODUCT IMAGE -->
+        <div class="product-image">
+          <a class="product-img-link" href="product.html">
+            <img src="{{product.image.url}}">
+          </a>
+        </div>
+        <!-- ^ END PRODUCT IMAGE -->
+        <!-- START PRODUCT NAME -->
+        <div class="product-name">
+          <a class="product-name-link" href="product.html">{{product.product_name}}</a>
+        </div>
+        <!-- ^ END PRODUCT NAME -->
+        <!-- START PRODUCT PRICE -->
+        <div class="product-price">${{product.price}}</div>
+        <!-- ^ END PRODUCT PRICE -->
+        <!-- START ADD TO CART BUTTON -->
+        <!-- <button class="add-to-cart">Add to Cart</button> -->
+        <form action="{% url "cart:cart_add" product.id %}" method="post" class="add-to-cart">
+            {% csrf_token %}
+            {{ cart_product_form }}
+            <input type="submit" class="buy-now btn btn-sm btn-primary" value="Add to cart">
+        </form>
+        <!-- ^ END ADD TO CART BUTTON -->
+      </div>
+      <!-- ^ END SINGLE PRODUCT CONTAINER -->
+      {% endfor %}
+
+    </div>
+    <!-- ^ END RIGHT FOR PRODUCTS -->
+
+
+
+  </div>
+  <!-- ^ END CONTENT WRAPPER -->
+  <div class="footer">
+    <!--     <h2>Footer</h2> -->
+    <p>Created by Group 1</p>
+  </div>
+
+</body>
+{% endblock %}
+</html>

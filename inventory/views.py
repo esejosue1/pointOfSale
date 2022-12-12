@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product
 from category.models import Category
 from django.http import HttpResponse
+from django.db.models import Q
 
 # Create your views here.
 def inventory(request, category_slug=None):
@@ -43,6 +44,7 @@ def search(request):
     # if the keyword exist, get its value ['keyword]
     if 'search' in request.GET:
         keyword = request.GET['search']
+        
         if keyword:
             # look for the whole description that matches the keyword
             products = Product.objects.order_by('-created_date').filter(Q(price__icontains=keyword) | Q(product_name__icontains=keyword))
