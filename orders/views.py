@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from .forms import OrderForm
 from .models import Order
 import datetime
-import json
 # Create your views here.
 
 
@@ -53,23 +52,24 @@ def completeOrder(request, cart_subtotal, cart_tax, cart_shipping, cart_total):
             'cart_total': cart_total,
         }
            
-        return render(request, "confirmation.html", context)
+        return render(request, "temp/confirmation.html", context)
 
     else:
-        form = OrderForm(request.POST)
-        return render(request, "index.html")
-        #print(form.errors)  #error
+        context = {
+            'form': form,
+ #           'cart_items': cart_items,
+            'cart_subtotal': cart_subtotal,
+            'cart_tax': cart_tax,
+            'cart_shipping': cart_shipping,
+            'cart_total': cart_total,
+        }
+        return render(request, 'temp/checkout.html', context)
         
        
 
  #home page for checkout form
 def orders(request):
-    return render(request, "checkout.html")
-
-def payment(request):
-    body=json.loads(request.body)
-    print(body)
-    return render
+    return render(request, "temp/checkout.html")
 
 def to_confirmation(request, cart_subtotal, cart_tax, cart_shipping, cart_total):
     pass

@@ -1,68 +1,156 @@
 <!DOCTYPE html>
+{% block content %}
+{% load static %}
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Store Home</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <header>
-    <div class="header">
-      <a href="index.html">
-        <img src="images/logo.svg" id="logo">
-      </a>
-    </div>
-
-    <div class="topnav">
-      <a id="cart" href="cart.html"><img class="bag-icon" src="images/bag.svg"></a>
-      <a id="account" href="login.html"><img class="user-icon" src="images/user.svg"></a>
-      <!-- SEARCH BAR START -->
-      <div class="search-container">
-        <input id="searchbar" type="text" class="text-form-field" name="search">
-        <button class="search-button" type="submit"><img src="images/search.svg"></button>
-      </div>
-      <!-- ^ SEARCH BAR END -->
-    </div>
-
-  </header>
+  <head>
+    <style>
+      .lalign {
+        float: left;
+        clear: none;
+      }
+  
+  
+      .search-container {
+        width: 100%;
+        float: center;
+        clear: both;
+        margin-top: 80px;
+      }
+  
+      #searchbar {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 1s;
+        width: 30px;
+        height: 30px;
+        background: white;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 3px solid black;
+        padding: 0 5px;
+      }
+  
+      #search-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 24px;
+        outline: 0;
+        border: 0;
+        display: none;
+        border-radius: 25px;
+        padding: 0 10px;
+      }
+  
+      .search-button {
+        box-sizing: border-box;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        color: #07051a;
+        text-align: center;
+        transition: all 1s;
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 10px 3.5px;
+        background-repeat: no-repeat;
+      }
+  
+      #searchbar:hover {
+        width: 40%;
+      }
+  
+      #searchbar:hover #search-input {
+        display: block;
+      }
+  
+      #searchbar:hover .search-button {
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 5px 3.5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+  
+  
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>View Cart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/cart.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/checkout.css'%}" />
+  </head>
+  
+  <body>
+      <header>
+          <div class="topnav">
+            <!-- LOGO -->
+            <a href="{% url 'home' %}">
+              <img src="{% static 'images/logo.svg' %}" id="logo" />
+            </a>
+            <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+            <a id="cart" href="{% url 'cart:cart_detail' %}">
+              <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
+            <a id="account" href="login.html">
+              <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
+          </div>
+    
+          <!-- SEARCH BAR START -->
+          <div class="search-container">
+            <form id="searchbar" action="">
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Search..."
+                name="search"
+              />
+              <i class="search-button"></i>
+            </form>
+          </div>
+          <!-- ^ SEARCH BAR END -->
+        </header>
   <!-- START CONTENT WRAPPER -->
   <div class="content">
     <div class="total-price">
-      <h1>Checkout</h1>
-      <h2>Shipping Information</h2>
+      <div class="head1">Checkout</h1>
+      <div class="head2">Shipping Information</div>
     </div>
 
-    <div class="sname">
-      <div class="info">
-        <label for="shipping first name">First Name:</label>
-        <input class="text-form-field" id="shipping first name" type="text" size="25" />
+    <form action = "{% url 'orders:completeOrder' cart_subtotal cart_tax cart_shipping cart_total %}" method = "post">
+      {% csrf_token %}
 
-        <label for="shipping last name">Last Name:</label>
-        <input class="text-form-field" id="shipping last name" type="text" size="25" />
-      </div>
-    </div>
+    <div class="sinfo">
+        <label class="slabels" for="shipping first name">First Name:<br>
+        <input class="nameinput" name="first_name" id="shipping first name" type="text" size="25" value="{{ form.first_name.value }}"/>
+        </label>
 
-    <div class="saddress1">
-      <div class="info">
-        <label for="shipping address1">Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input class="text-form-field" id="shipping address1" type="text" size="25" />
+        <label class="slabels" for="shipping last name">Last Name:<br>
+        <input class="nameinput" name="last_name" id="shipping last name" type="text" size="25" value="{{ form.last_name.value }}" />
+        </label>
+      <br>
 
-        <label for="shipping address2">Apt/Unit:&nbsp&nbsp&nbsp</label>
-        <input class="text-form-field" id="shipping address2" type="text" size="25" />
-      </div>
-    </div>
+        <label class="slabels" for="shipping address1">Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <input class="saddressinput" name="address" id="shipping address1" type="text" size="25" value="{{ form.address.value }}"/>
+        </label>
+        <br>
 
-    <div class="scity">
-      <div class="info">
-        <label for="shipping city">City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input class="text-form-field" class="text-form-field" type="text" size="25" />
+        <label class="slabels" for="shipping address2">Apt/Unit:&nbsp&nbsp&nbsp<br>
+        <input class="saddressinput" name="address2" id="shipping address2" type="text" size="25" value="{{ form.address2.value }}"/>
+        </label>
+        <br>
 
-        <label for="shipping state">State:</label>
-        <select id="state abv">
+        <label class="scity" for="shipping city">City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <input class="cityinput" name="city" class="text-form-field" type="text" size="25" value="{{ form.city.value }}"/>
+        </label>
+
+        <select class="sstate" name="state" id="state abv">
           <option>ST</option>
           <option value="alabama">AL</option>
           <option value="alaska">AK</option>
@@ -123,25 +211,24 @@
           <option value="wyoming">WY</option>
         </select>
 
-        <label for="shipping zip">&nbsp Zip:&nbsp</label>
-        <input class="text-form-field" id="shipping zip" type="text" size="17" />
+        <label class="slabels" for="shipping zip">&nbsp Zip:&nbsp<br>
+        <input class="zipcode" name="zip" id="shipping zip" type="text" size="17" value="{{ form.zip.value }}"/>
+        </label>
+        <br>
 
+        <label class="slabels" for="shipping phone">Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;<br>
+        <input class="nameinput" name="phone" id="shipping first name" type="text" size="25" value="{{ form.phone.value }}"/>
+        </label>
+
+        <label class="slabels" for="shipping email">Email:<br>
+        <input class="nameinput" name="email" id="shipping email" type="text" size="30"value="{{ form.email.value }}"/>
+        </label>
       </div>
     </div>
-    <div class="scontact">
-      <div class="info">
-        <label for="shipping phone">Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;</label>
-        <input class="text-form-field" id="shipping first name" type="text" size="25" />
 
-        <label for="shipping email">Email:</label>
-        <input class="text-form-field" id="shipping email" type="text" size="30" />
-      </div>
-    </div>
-
-
-    <h2>Payment Options</h2>
     <div id="paypal-button-container" style="width:17px;">
-      <!--</div>-->
+      <br>
+      <div class="head2">Payment Options</div>
 
       <!-- Include the PayPal JavaScript SDK -->
       <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
@@ -155,7 +242,7 @@
             return actions.order.create({
               purchase_units: [{
                 amount: {
-                  value: '88.44'
+                  value: '{{ cart_total }}'
                 }
               }]
             });
@@ -165,6 +252,7 @@
           onApprove: function (data, actions) {
             return actions.order.capture().then(function (orderData) {
               // Successful capture! For demo purposes:
+              console.log(orderData)
               console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
               var transaction = orderData.purchase_units[0].payments.captures[0];
               alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
@@ -176,13 +264,13 @@
               // Or go to another URL:  actions.redirect('thank_you.html');
             });
           }
-
+        
 
         }).render('#paypal-button-container');
       </script>
-      <a href="confirmation.html">
-        <button class="checkout-button">Place Order</button>
-      </a>
+    </div>
+    <div>
+      <button type= "submit" class="checkout" onclick="{% url 'orders:completeOrder' cart_subtotal cart_tax cart_shipping cart_total %}">Place Order</button>
     </div>
   </div>
   <!-- ^ END CONTENT WRAPPER -->
@@ -193,3 +281,4 @@
 </body>
 
 </html>
+{% endblock %}

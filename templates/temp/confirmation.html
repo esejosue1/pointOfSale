@@ -1,34 +1,122 @@
 <!DOCTYPE html>
+{% load static %}
+{% block content %}
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Store Home</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <style>
+      .lalign {
+        float: left;
+        clear: none;
+      }
+  
+  
+      .search-container {
+        width: 100%;
+        float: center;
+        clear: both;
+        margin-top: 80px;
+      }
+  
+      #searchbar {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 1s;
+        width: 30px;
+        height: 30px;
+        background: white;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 3px solid black;
+        padding: 0 5px;
+      }
+  
+      #search-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 24px;
+        outline: 0;
+        border: 0;
+        display: none;
+        border-radius: 25px;
+        padding: 0 10px;
+      }
+  
+      .search-button {
+        box-sizing: border-box;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        color: #07051a;
+        text-align: center;
+        transition: all 1s;
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 10px 3.5px;
+        background-repeat: no-repeat;
+      }
+  
+      #searchbar:hover {
+        width: 40%;
+      }
+  
+      #searchbar:hover #search-input {
+        display: block;
+      }
+  
+      #searchbar:hover .search-button {
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 5px 3.5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+  
+  
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>View Cart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/cart.css'%}" />
+  </head>
+  
+  <body>
+      <header>
+          <div class="topnav">
+            <!-- LOGO -->
+            <a href="{% url 'home' %}">
+              <img src="{% static 'images/logo.svg' %}" id="logo" />
+            </a>
+            <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+            <a id="cart" href="{% url 'cart:cart_detail' %}">
+              <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
+            <a id="account" href="login.html">
+              <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
+          </div>
+    
+          <!-- SEARCH BAR START -->
+          <div class="search-container">
+            <form id="searchbar" action="">
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Search..."
+                name="search"
+              />
+              <i class="search-button"></i>
+            </form>
+          </div>
+          <!-- ^ SEARCH BAR END -->
+        </header>
 
-<body>
 
-  <header>
-    <div class="header">
-      <a href="index.html">
-        <img src="images/logo.svg" id="logo">
-      </a>
-    </div>
-
-    <div class="topnav">
-      <a id="cart" href="cart.html"><img class="bag-icon" src="images/bag.svg"></a>
-      <a id="account" href="login.html"><img class="user-icon" src="images/user.svg"></a>
-      <!-- SEARCH BAR START -->
-      <div class="search-container">
-        <input id="searchbar" type="text" placeholder="Search..." name="search">
-        <button class="search-button" type="submit"><img src="images/search.svg"></button>
-      </div>
-      <!-- ^ SEARCH BAR END -->
-    </div>
-
-  </header>
   <!-- START CONTENT WRAPPER -->
   <div class="content">
 
@@ -44,7 +132,7 @@
                   style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
 
                   <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
-                    Thank You Nacho Libre For Your Order!
+                    Thank You {{form.first_name}} {{form.last_name}} For Your Order!
                   </h2>
                 </div>
               </td>
@@ -65,7 +153,7 @@
                     <td>
                       <div class="confirmationn number" width="25%" align="left" bgcolor="#eeeeee"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                        2345678
+                        {{form.order_number}}
                       </div>
                     </td>
                   </tr>
@@ -81,7 +169,7 @@
                     <td>
                       <div class="item cost" width="25%" align="left"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                        $100.00
+                        ${{ cart_subtotal }}
                       </div>
                     </td>
                   </tr>
@@ -97,7 +185,7 @@
                     <td>
                       <div class="shipping cost" width="25%" align="left"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                        $10.00
+                        ${{ cart_shipping }}
                       </div>
                     </td>
                   </tr>
@@ -113,7 +201,7 @@
                     <td>
                       <div class="tax cost" width="25%" align="left"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                        $5.00
+                        ${{ cart_tax }}
                       </div>
                     </td>
                   </tr>
@@ -135,7 +223,7 @@
                     <td>
                       <div class="total amount" width="25%" align="right"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 5px 80px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                        $115.00&nbsp;&nbsp;
+                        ${{ cart_total }}
                       </div>
 
                     </td>
@@ -164,7 +252,7 @@
                         <div class="deliver address" align="left" valign="top"
                           style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                           <p style="font-weight: 800;">Delivery Address</p>
-                          <p>333 Twin Oaks Valley Rd.<br>Academic Hall 206<br>San Marcos, CA 92078</p>
+                          <p>{{form.address}}<br>{{form.address2}}<br>{{form.city}}, {{form.state}} {{form.zip}}</p>
                         </div>
                       </td>
                     </tr>
@@ -191,7 +279,7 @@
       <!--second portion end-->
       <tr>
                 <td>
-                  <a href="index.html">
+                  <a href="{% url 'home' %}">
         <button class="submit">Exit</button>
                   </a>
 
@@ -208,3 +296,4 @@
 </body>
 
 </html>
+{% endblock %}

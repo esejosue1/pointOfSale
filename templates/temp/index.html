@@ -2,40 +2,149 @@
 {% load static %}
 <html lang="en">
   <head>
+    <style>
+      .g {
+        float: left;
+        clear: none;
+      }
+  
+  
+      .search-container {
+        width: 100%;
+        float: center;
+        clear: both;
+        margin-top: 80px;
+      }
+  
+      #searchbar {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 1s;
+        width: 30px;
+        height: 30px;
+        background: white;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 3px solid black;
+        padding: 0 5px;
+      }
+  
+      #search-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 24px;
+        outline: 0;
+        border: 0;
+        display: none;
+        border-radius: 25px;
+        padding: 0 10px;
+      }
+  
+      .search-button {
+        box-sizing: border-box;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        color: #07051a;
+        text-align: center;
+        transition: all 1s;
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 10px 3.5px;
+        background-repeat: no-repeat;
+      }
+  
+      #searchbar:hover {
+        width: 40%;
+      }
+  
+      #searchbar:hover #search-input {
+        display: block;
+      }
+  
+      #searchbar:hover .search-button {
+        background-image: url("{%static 'images/search.svg'%}");
+        background-size: 15px;
+        background-position: 5px 3.5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+
+      .pname, .pprice {
+        text-align: center;
+        font-size: 1rem;
+      }
+      .pdesc {
+        text-align: center;
+        font-size: .75rem;
+      }
+
+      .addtocartbutton {
+        margin: 20.5px;
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+        background-color: black;
+        padding: 5px;
+        width: 150px;
+        border: 3px solid transparent;
+      }
+
+      .addtocartbutton:hover,
+      .submit:hover,
+      .recoverpassword:hover,
+      .checkout-button:hover {
+        border: 3px solid black;
+        background-color: white;
+        color: black;
+      }
+  
+    </style>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width">
-    <title>Store Home</title>
-    <link rel="stylesheet" href="{%static 'css/style.css' %}">
-    <link rel="stylesheet" href="{%static 'css/search.css' %}">
+    <meta name="viewport" content="width=device-width" />
+    <title>View Cart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/cart.css'%}" />
   </head>
-
+  
   <body>
-    <header>
-      <div class="topnav">
-        <!-- LOGO -->
-        <a href="{% url 'home' %}">
-          <img src="{%static './images/logo.svg' %}" id="logo">
-        </a>
-        <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
-        <a id="cart" href="{% url 'cart:cart_detail' %}">
-          <img class="bag-icon" src="{%static './images/bag.svg' %}"
-        /></a>
-        <a id="account" href="login.html"
-          ><img class="user-icon" src="{% static './images/user.svg' %}"
-        /></a>
-      </div>
-
-      <!-- SEARCH BAR START -->
-      <div class="search-container">
-        <form id="searchbar" action="">
-          <input id="search-input" type="search" placeholder="Search..." name="search"/>
-          <i class="search-button"></i>
-        </form>
-      </div>
-      <!-- ^ SEARCH BAR END -->
-    </header>
+      <header>
+          <div class="topnav">
+            <!-- LOGO -->
+            <a href="{% url 'home' %}">
+              <img src="{% static 'images/logo.svg' %}" id="logo" />
+            </a>
+            <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
+            <a id="cart" href="{% url 'cart:cart_detail' %}">
+              <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
+            <a id="account" href="login.html">
+              <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
+          </div>
+    
+          <!-- SEARCH BAR START -->
+          <div class="search-container">
+            <form id="searchbar" action="">
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Search..."
+                name="search"
+              />
+              <i class="search-button"></i>
+            </form>
+          </div>
+          <!-- ^ SEARCH BAR END -->
+        </header>
     <!-- START CONTENT WRAPPER -->
     <div class="content">
+
+      {% include 'temp/messages.html' %}
       <!-- START CATEGORIES MENU -->
       <div class="left">
         <!-- START CATEGORIES -->
@@ -53,25 +162,26 @@
           {% for product in products %}
           <div class="product-container">
             <!-- START PRODUCT IMAGE -->
-            <div class="product-image">
+            <div class="product-img">
               <a class="product-img-link" href="{{product.get_url}}">
                 <img src="{{product.image.url}}" />
               </a>
             </div>
             <!-- ^ END PRODUCT IMAGE -->
             <!-- START PRODUCT NAME -->
-            <div class="product-name">
+            <div class="pname">
               <a class="product-name-link" href="{{product.get_url}}">{{product.product_name}}</a>
             </div>
-            <!-- ^ END PRODUCT NAME -->
+            <!-- ^ END PRODUCT NAME --> 
             <!-- START PRODUCT PRICE -->
-            <div class="product-price">${{product.price}}</div>
+            <div class="pprice">${{product.price}}</div>
+            <div class="pdesc">{{product.description}}</div>
             <!-- ^ END PRODUCT PRICE -->
             <!-- START ADD TO CART BUTTON -->
-            <form action="{% url "cart:cart_add" product.id %}" method="post" class="add-to-cart">
+            <form action="{% url "cart:cart_add" product.id %}" method="post">
               {% csrf_token %}
               {{ cart_product_form }}
-              <input type="submit" class="add-to-cart" value="Add to Cart">
+              <input type="submit" value="Add to Cart" class="addtocartbutton">
           </form>
             <!-- ^ END ADD TO CART BUTTON -->
           </div>
@@ -114,6 +224,14 @@
     <div class="footer">
       <p>Created by Group 1</p>
     </div>
+
+    <script>
+      setTimeout(function(){
+        if ($('#msg').length > 0) {
+          $('#msg').remove();
+        }
+      }, 2000)
+    </script>
   </body>
   {% endblock %}
 </html>

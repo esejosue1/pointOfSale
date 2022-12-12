@@ -1,5 +1,5 @@
 .shopping-cart {
-  display: flow-root;
+  display: table;
   float: center;
   clear: both;
   padding: 0 20px;
@@ -31,36 +31,6 @@
   float: left;
 }
 
-/* Column widths */
-/* .product-image-label {
-    color: #aaa;
-    float: left;
-    text-align: left;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-  } */
-/* .product-name-label {
-    color: #aaa;
-    float: left;
-    text-align: left;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-  } */
-/* .product-price {
-    color: #aaa;
-    float: left;
-    width: 15%;
-  }
-  .product-quantity {
-    color: #aaa;
-    float: left;
-    width: 10%;
-  }
-  .product-removal {
-    color: #aaa;
-    float: left;
-    width: 10%;
-  }*/
 .product-total-price {
   float: right;
 }
@@ -76,10 +46,6 @@
 .product {
   margin: 5px 30px 20px;
   float: left;
-  /*   padding: 20px; */
-  /*   margin-top: 5px;
-    margin-bottom: 20px;
-    padding-bottom: 25px; */
   border-bottom: 1px solid #eee;
 }
 
@@ -89,7 +55,7 @@
 }
 .product-image img {
   float: left;
-  width: 100px;
+  width: 125px;
   padding: 0 20px 30px;
 }
 
@@ -106,24 +72,51 @@
 
 .product-name-link:hover {
   font-weight: 600;
-  /*   font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium'; */
 }
 
 .product-price {
-  /*   padding: 10px; */
-  /*   float: left; */
   margin: 15px 0;
   padding: 10px 0;
   text-align: left;
 }
 
-.product-quantity input {
-  width: 60px;
-  /*   padding: 2px; */
+.qty-buttons {
+  float: left;
+  text-align: center;
+  color: white;
+  background-color: black;
+  border: 2px solid transparent;
+  width: 25px;
+  height: 25px;
+}
+
+.qty-buttons:hover {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}
+
+.product-quantity, #pro-qty {
+  float: left;
+}
+
+#decrement {
+  margin-right: 10px;
+}
+
+#increment {
+  margin: 0 10px;
+}
+
+#pro-qty {
+  padding-top: 4px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .product-removal {
-  float: left;
+  margin-left: 100px;
+  float: right;
 }
 
 .remove-product {
@@ -131,8 +124,6 @@
   text-align: center;
   color: white;
   background-color: #cd0737;
-  /* red #CD0737 */
-  /*   width: 50px; */
   padding: 3px 5px;
   border: 2px solid transparent;
 }
@@ -145,6 +136,7 @@
 
 .product-total-price {
   text-align: right;
+  font-weight: 600;
 }
 
 /* Totals section */
@@ -173,7 +165,6 @@
 }
 
 .totals .totals-item-total {
-  /*     font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium'; */
   font-weight: 600;
 }
 
