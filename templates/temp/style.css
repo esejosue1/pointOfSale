@@ -6,7 +6,6 @@ html {
 
 body {
   font-family: Arial;
-  /*   font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium'; */
   margin: 60px;
   background-color: white;
   box-shadow: 0px 10px 10px 5px #999;
@@ -162,7 +161,7 @@ h1 {
   margin: 15px;
   font-size: 1rem;
   text-align: center;
-  /*   font-weight: 600; */
+    font-weight: 600;
   color: white;
   background-color: black;
   /* green #9BD511 */
@@ -697,6 +696,7 @@ page-num:hover {
   background: black;
   margin-top: 60px;
   color: white;
+  font-weight: 600;
 }
 
 #login-header {
