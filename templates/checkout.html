@@ -40,7 +40,7 @@
       <h1>Checkout</h1>
       <h2>Shipping Information</h2>
     </div>
-<form action = "{% url 'completeOrder' %}" method = "post">
+<form action = "{% url 'orders:completeOrder' cart_subtotal cart_tax cart_shipping cart_total %}" method = "post">
   {% csrf_token %}
 
     <div class="sname">
@@ -186,7 +186,7 @@
 
         }).render('#paypal-button-container');
       </script>
-      <button type= "submit" onclick="location.href = '/completeOrder'">Place Order</button>
+      <button type= "submit" onclick="{% url 'orders:completeOrder' cart_subtotal cart_tax cart_shipping cart_total %}">Place Order</button>
     </div>
  </div>
 
