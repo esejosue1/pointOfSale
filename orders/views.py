@@ -6,7 +6,7 @@ import datetime
 
 
 
-def completeOrder(request):
+def completeOrder(request, cart_subtotal, cart_tax, cart_shipping, cart_total):
     #check if form is post
     form = OrderForm(request.POST)  #new var that holds the info from form.py
         
@@ -45,6 +45,11 @@ def completeOrder(request):
 
         context = {
             'form': data,
+ #           'cart_items': cart_items,
+            'cart_subtotal': cart_subtotal,
+            'cart_tax': cart_tax,
+            'cart_shipping': cart_shipping,
+            'cart_total': cart_total,
         }
            
         return render(request, "confirmation.html", context)
@@ -59,6 +64,10 @@ def completeOrder(request):
  #home page for checkout form
 def orders(request):
     return render(request, "checkout.html")
+
+def to_confirmation(request, cart_subtotal, cart_tax, cart_shipping, cart_total):
+    pass
+    
 
 
 
