@@ -43,7 +43,7 @@
   color: #07051a;
   text-align: center;
   transition: all 1s;
-  background-image: url("images/search.svg");
+  background-image: url("{%static 'images/search.svg' %}");
   background-size: 15px;
   background-position: 10px 3.5px;
   background-repeat: no-repeat;
@@ -58,10 +58,9 @@
 }
 
 #searchbar:hover .search-button {
-  background-image: url("images/search.svg");
+  background-image: url("{%static 'images/search.svg' %}");
   background-size: 15px;
   background-position: 5px 3.5px;
   background-repeat: no-repeat;
   cursor: pointer;
 }
-

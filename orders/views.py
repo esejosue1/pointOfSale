@@ -52,18 +52,18 @@ def completeOrder(request, cart_subtotal, cart_tax, cart_shipping, cart_total):
             'cart_total': cart_total,
         }
            
-        return render(request, "confirmation.html", context)
+        return render(request, "temp/confirmation.html", context)
 
     else:
         form = OrderForm(request.POST)
-        return render(request, "index.html")
+        #return render(request, "temp/index.html")
         #print(form.errors)  #error
         
        
 
  #home page for checkout form
 def orders(request):
-    return render(request, "checkout.html")
+    return render(request, "temp/checkout.html")
 
 def to_confirmation(request, cart_subtotal, cart_tax, cart_shipping, cart_total):
     pass

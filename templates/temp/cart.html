@@ -1,29 +1,30 @@
 <!DOCTYPE html>
+{% load static %}
+{% block content %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>View Cart</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="search.css" />
-    <!--   <link rel="stylesheet" href="cart-style.css"> -->
-    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/search.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    
+
   </head>
 
   <body>
     <header>
       <div class="topnav">
         <!-- LOGO -->
-        <a href="index.html">
-          <img src="images/logo.svg" id="logo" />
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/logo.svg' %}" id="logo" />
         </a>
         <!-- CART & ACCOUNT (LOGIN/REGISTER) -->
-        <a id="cart" href="cart.html"
-          ><img class="bag-icon" src="images/bag.svg"
-        /></a>
-        <a id="account" href="login.html"
-          ><img class="user-icon" src="images/user.svg"
-        /></a>
+        <a id="cart" href="{% url 'cart:cart_detail' %}">
+          <img class="bag-icon" src="{% static 'images/bag.svg' %}"/></a>
+        <a id="account" href="login.html">
+          <img class="user-icon" src="{% static 'images/user.svg' %}"/></a>
       </div>
 
       <!-- SEARCH BAR START -->
@@ -57,18 +58,19 @@
       <label class="product-total-price">Total</label> -->
       </div>
       <!-- Shopping Cart Product Container START -->
+      {% for item in cart_items %}
+      {% with product=item.product%}
+
       <div class="product">
-        <div class="product-image">
-          <a href="product.html">
-            <img src="/images/img-placeholder.png" />
-          </a>
-        </div>
-        <div class="product-name">
-          <a class="product-name-link" href="product.html">Product Name</a>
-          <div class="product-price">45.99</div>
-          <div class="product-quantity">
-            <!-- QTY HERE -->
+        <a href="{{ product.get_url}}">
+          <div class="product-image">
+            <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}">
           </div>
+          <div class="product-name">{{ product.product_name }}</div>
+        </a>
+        <div class="product-price">{{ product.price }}</div>
+        <div class="product-quantity"></div>
+        {{ item.quantity }}
           <!--         <div class="product-removal">
         <button class="remove-product">Remove</button>
       </div> -->
@@ -86,27 +88,28 @@
         <div class="product-total-price">45.99</div>
       </div>
       <!-- Shopping Cart Product Container END -->
-
+        {% endwith %}
+        {% endfor %}
       <!-- Totals -->
       <div class="totals">
         <div class="totals-item">
           <label>Subtotal</label>
-          <div class="totals-value" id="cart-subtotal">71.97</div>
+          <div class="totals-value" id="cart-subtotal"> {{ cart_subtotal }} </div>
         </div>
         <div class="totals-item">
-          <label>Tax (5%)</label>
-          <div class="totals-value" id="cart-tax">3.60</div>
+          <label>Tax (5.5%)</label>
+          <div class="totals-value" id="cart-tax"> {{ cart_tax }} </div>
         </div>
         <div class="totals-item">
           <label>Shipping</label>
-          <div class="totals-value" id="cart-shipping">15.00</div>
+          <div class="totals-value" id="cart-shipping"> {{ cart_shipping }} </div>
         </div>
         <div class="totals-item totals-item-total">
           <label>Grand Total</label>
-          <div class="totals-value" id="cart-total">90.57</div>
+          <div class="totals-value" id="cart-total"> {{ cart_total }} </div>
         </div>
       </div>
-      <a class="checkout-button" href="checkout.html">
+      <a class="checkout-button" href="{% url 'cart:cart_to_orders' %}">
         <button class="checkout">Checkout</button>
       </a>
     </div>
@@ -118,3 +121,4 @@
     </div>
   </body>
 </html>
+{% endblock %}

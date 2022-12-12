@@ -21,9 +21,7 @@ def cart(request):
     context={
         "cart":cart
     }
-    return render(request, "cart.html", context)
-def cart1(request):  
-    return render(request, "cart1.html", )
+    return render(request, "temp/cart.html", context)
 
 
 '''

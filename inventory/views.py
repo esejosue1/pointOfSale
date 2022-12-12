@@ -25,7 +25,7 @@ def inventory(request, category_slug=None):
         "product_count":product_count
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'temp/index.html', context)
 
 
 def productDetail(request,category_slug, product_slug):
@@ -37,7 +37,7 @@ def productDetail(request,category_slug, product_slug):
     content ={
         "product":product
     }
-    return render(request, "product.html", content)
+    return render(request, "temp/product.html", content)
 
 def search(request):
     # if the keyword exist, get its value ['keyword]
@@ -51,4 +51,4 @@ def search(request):
         'products': products,
         'product_count': found,
     }
-    return render(request, 'search.html',context)
+    return render(request, 'temp/search.html',context)

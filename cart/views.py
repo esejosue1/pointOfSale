@@ -85,7 +85,7 @@ def cart_detail(request):
         'cart_total': '{:.2f}'.format(cart_total),
     }
     
-    return render(request, 'cart.html', context)
+    return render(request, 'temp/cart.html', context)
 
 def cart_add_quantity(request, product_id, quantity):
     item = get_object_or_404(Product, id=product_id)
@@ -119,4 +119,4 @@ def cart_to_orders(request):
         'cart_shipping': '{:.2f}'.format(cart_shipping),
         'cart_total': '{:.2f}'.format(cart_total),
     }
-    return render(request, "checkout.html", context)
+    return render(request, "temp/checkout.html", context)
