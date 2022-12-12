@@ -1,23 +1,121 @@
-.checkout-button:hover {
+.head1 {
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+.head2 {
+  text-align: center;
+  margin: 30px auto;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+  /* Checkout */
+.checkoutbutton {
+  display: grid;
+  clear: both;
+  margin: 30px auto;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 5px 25px;
+  border: 3px solid transparent;
+  }
+  
+  .checkoutbutton:hover {
     border: 3px solid black;
     background-color: white;
     color: black;
   }
 
-  /* Checkout */
-.checkout {
-    float: right;
-    margin: 10px 4% 20px;
+  #paypal-button-container {
+    margin: 15px auto;
+    width: 200px;
+    height: auto;
+  }
+
+  .sinfo {
+    float: left;
+    margin-bottom: 30px;
+  }
+
+  .slabels, .saddress, .scity {
+    float: left;
+    text-align: left;
     font-size: 1rem;
+    margin-top: 15px;
+  }
+
+  .scity {
+    clear: both;
+  }
+
+  .nameinput {
+    clear:left;
+    width: 152px;
+    height: 25px;
+    padding: 1px 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin: 5px 20px 0 0;
+  }
+
+  .saddress {
+    float: left;
+  }
+
+  .cityinput {
+    clear:left;
+    width: 150px;
+    height: 25px;
+    padding: 1px 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin: 5px 20px 0 0;
+  }
+
+  .saddressinput {
+    clear:left;
+    width: 345px;
+    height: 25px;
+    padding: 1px 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin: 5px 20px 0 0;
+  }
+
+  .sstate, select {
+    float: left;
     text-align: center;
-    color: white;
-    background-color: black;
-    padding: 5px 25px;
-    border: 3px solid transparent;
-  }
-  
-  .checkout:hover {
-    border: 3px solid black;
+    margin: 38px 15px -10px 0;
+    height: 29px;
+    width: 50px;
     background-color: white;
-    color: black;
+    border-radius: 15px;
+    border: 1px solid black;
   }
+
+.zipcode {
+  clear:left;
+  width: 90px;
+  height: 25px;
+  padding: 1px 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+  margin: 5px 15px 0 0;
+}
+
+.sbutton {
+  clear: both;
+  float: center;
+  display: table;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* #paypal-button-container {
+  margin-top: 20px;
+} */

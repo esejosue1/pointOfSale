@@ -101,6 +101,7 @@ h1 {
 .product-name,
 .product-price {
   margin: 10px 15px;
+  text-align: center;
 }
 
 .product-name a:hover {
@@ -128,8 +129,7 @@ h1 {
   border: 0px solid transparent;
 }
 
-.add-to-cart,
-.add-to-cart.add-to-cart:visited {
+.add-to-cart {
   margin: 15px;
   font-size: 1rem;
   text-align: center;

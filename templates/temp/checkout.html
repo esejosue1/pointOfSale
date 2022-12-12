@@ -85,6 +85,7 @@
     <title>View Cart</title>
     <link rel="stylesheet" href="{% static 'css/style.css'%}" />
     <link rel="stylesheet" href="{% static 'css/cart.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/checkout.css'%}" />
   </head>
   
   <body>
@@ -118,40 +119,38 @@
   <!-- START CONTENT WRAPPER -->
   <div class="content">
     <div class="total-price">
-      <h1>Checkout</h1>
-      <h2>Shipping Information</h2>
+      <div class="head1">Checkout</h1>
+      <div class="head2">Shipping Information</div>
     </div>
 
     <form action = "{% url 'orders:completeOrder' cart_subtotal cart_tax cart_shipping cart_total %}" method = "post">
       {% csrf_token %}
 
-    <div class="sname">
-      <div class="info">
-        <label for="shipping first name">First Name:</label>
-        <input class="text-form-field" name="first_name" id="shipping first name" type="text" size="25" value="{{ form.first_name.value }}"/>
+    <div class="sinfo">
+        <label class="slabels" for="shipping first name">First Name:<br>
+        <input class="nameinput" name="first_name" id="shipping first name" type="text" size="25" value="{{ form.first_name.value }}"/>
+        </label>
 
-        <label for="shipping last name">Last Name:</label>
-        <input class="text-form-field" name="last_name" id="shipping last name" type="text" size="25" value="{{ form.last_name.value }}" />
-      </div>
-    </div>
+        <label class="slabels" for="shipping last name">Last Name:<br>
+        <input class="nameinput" name="last_name" id="shipping last name" type="text" size="25" value="{{ form.last_name.value }}" />
+        </label>
+      <br>
 
-    <div class="saddress1">
-      <div class="info">
-        <label for="shipping address1">Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input class="text-form-field" name="address" id="shipping address1" type="text" size="25" value="{{ form.address.value }}"/>
+        <label class="slabels" for="shipping address1">Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <input class="saddressinput" name="address" id="shipping address1" type="text" size="25" value="{{ form.address.value }}"/>
+        </label>
+        <br>
 
-        <label for="shipping address2">Apt/Unit:&nbsp&nbsp&nbsp</label>
-        <input class="text-form-field" name="address2" id="shipping address2" type="text" size="25" value="{{ form.address2.value }}"/>
-      </div>
-    </div>
+        <label class="slabels" for="shipping address2">Apt/Unit:&nbsp&nbsp&nbsp<br>
+        <input class="saddressinput" name="address2" id="shipping address2" type="text" size="25" value="{{ form.address2.value }}"/>
+        </label>
+        <br>
 
-    <div class="scity">
-      <div class="info">
-        <label for="shipping city">City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input class="text-form-field" name="city" class="text-form-field" type="text" size="25" value="{{ form.city.value }}"/>
+        <label class="scity" for="shipping city">City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <input class="cityinput" name="city" class="text-form-field" type="text" size="25" value="{{ form.city.value }}"/>
+        </label>
 
-        <label for="shipping state">State:</label>
-        <select name="state" id="state abv">
+        <select class="sstate" name="state" id="state abv">
           <option>ST</option>
           <option value="alabama">AL</option>
           <option value="alaska">AK</option>
@@ -212,25 +211,24 @@
           <option value="wyoming">WY</option>
         </select>
 
-        <label for="shipping zip">&nbsp Zip:&nbsp</label>
-        <input class="text-form-field" name="zip" id="shipping zip" type="text" size="17" value="{{ form.zip.value }}"/>
+        <label class="slabels" for="shipping zip">&nbsp Zip:&nbsp<br>
+        <input class="zipcode" name="zip" id="shipping zip" type="text" size="17" value="{{ form.zip.value }}"/>
+        </label>
+        <br>
 
+        <label class="slabels" for="shipping phone">Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;<br>
+        <input class="nameinput" name="phone" id="shipping first name" type="text" size="25" value="{{ form.phone.value }}"/>
+        </label>
+
+        <label class="slabels" for="shipping email">Email:<br>
+        <input class="nameinput" name="email" id="shipping email" type="text" size="30"value="{{ form.email.value }}"/>
+        </label>
       </div>
     </div>
-    <div class="scontact">
-      <div class="info">
-        <label for="shipping phone">Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;</label>
-        <input class="text-form-field" name="phone" id="shipping first name" type="text" size="25" value="{{ form.phone.value }}"/>
 
-        <label for="shipping email">Email:</label>
-        <input class="text-form-field" name="email" id="shipping email" type="text" size="30"value="{{ form.email.value }}"/>
-      </div>
-    </div>
-
-
-    <h2>Payment Options</h2>
     <div id="paypal-button-container" style="width:17px;">
-      <!--</div>-->
+      <br>
+      <div class="head2">Payment Options</div>
 
       <!-- Include the PayPal JavaScript SDK -->
       <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>

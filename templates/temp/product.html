@@ -194,16 +194,16 @@
           <div id="pprice">${{product.price}}</div>
           <div id="pdesc">{{product.description}}</div>
         <div class="p-qty">
-            <form class="lalign">
-              <input type="button" class="qty-buttons" value="&minus;" id="minus">
+            <form class="lalign" action="{% url 'cart:cart_add_decrement' product.id%}">
+              <input type="submit" class="qty-buttons" value="&minus;" id="minus">
               </form>
               <!--  QTY VALUE  -->
-              <span id="pqty">function here</span>
-              <form class="lalign">
-              <input type="button" class="qty-buttons" id="plus" value="&plus;">
+              <span id="pqty">{{product.add_quantity}}</span>
+            <form action="{% url 'cart:cart_add_increment' product.id%}" class="lalign" >
+              <input type="submit" class="qty-buttons" id="plus" value="&plus;">
           </form>
         </div>
-          <form id="addcart">
+          <form id="addcart" action="{% url 'cart:cart_add_quantity' product.id %}">
             <input type="submit" class="add-to-cart" value="Add to Cart" />
           </form>
         </div>

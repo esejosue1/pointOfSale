@@ -96,18 +96,6 @@ def cart_detail(request):
     
     return render(request, 'temp/cart.html', context)
 
-def cart_add_quantity(request, product_id, quantity):
-    item = get_object_or_404(Product, id=product_id)
-    try:
-        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
-        cart_item = CartItem.objects.get(product=item, cart=cart)
-        cart_item.quantity = quantity
-
-    except ShoppingCart.DoesNotExist:
-        print('set quantity failed')
-
-    return redirect('cart:cart_detail')
-
  #home page for checkout form
 def cart_to_orders(request):
     try:
@@ -129,3 +117,41 @@ def cart_to_orders(request):
         'cart_total': '{:.2f}'.format(cart_total),
     }
     return render(request, "temp/checkout.html", context)
+
+def cart_add_decrement(request, product_id):
+    item = get_object_or_404(Product, id=product_id)
+    if item.add_quantity > 1:
+        item.add_quantity -= 1
+        item.save()
+
+    context = {
+        'product': item,
+    }
+
+    return render(request, 'temp/product.html', context)
+
+def cart_add_increment(request, product_id):
+    item = get_object_or_404(Product, id=product_id)
+    item.add_quantity += 1
+    item.save()
+
+    context = {
+        'product': item,
+    }
+
+    return render(request, 'temp/product.html', context)
+
+def cart_add_quantity(request, product_id):
+    item = get_object_or_404(Product, id=product_id)
+    try:
+        cart = ShoppingCart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=item, cart=cart)
+        cart_item.quantity += item.add_quantity
+        item.add_quantity = 1
+        item.save()
+        cart_item.save()
+
+    except ShoppingCart.DoesNotExist:
+        print('set quantity failed')
+
+    return redirect('cart:cart_detail')

@@ -75,7 +75,35 @@
         background-repeat: no-repeat;
         cursor: pointer;
       }
-  
+
+      .pname, .pprice {
+        text-align: center;
+        font-size: 1rem;
+      }
+      .pdesc {
+        text-align: center;
+        font-size: .75rem;
+      }
+
+      .addtocartbutton {
+        margin: 20.5px;
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+        background-color: black;
+        padding: 5px;
+        width: 150px;
+        border: 3px solid transparent;
+      }
+
+      .addtocartbutton:hover,
+      .submit:hover,
+      .recoverpassword:hover,
+      .checkout-button:hover {
+        border: 3px solid black;
+        background-color: white;
+        color: black;
+      }
   
     </style>
     <meta charset="UTF-8" />
@@ -132,25 +160,26 @@
           {% for product in products %}
           <div class="product-container">
             <!-- START PRODUCT IMAGE -->
-            <div class="product-image">
+            <div class="product-img">
               <a class="product-img-link" href="{{product.get_url}}">
                 <img src="{{product.image.url}}" />
               </a>
             </div>
             <!-- ^ END PRODUCT IMAGE -->
             <!-- START PRODUCT NAME -->
-            <div class="product-name">
+            <div class="pname">
               <a class="product-name-link" href="{{product.get_url}}">{{product.product_name}}</a>
             </div>
-            <!-- ^ END PRODUCT NAME -->
+            <!-- ^ END PRODUCT NAME --> 
             <!-- START PRODUCT PRICE -->
-            <div class="product-price">${{product.price}}</div>
+            <div class="pprice">${{product.price}}</div>
+            <div class="pdesc">{{product.description}}</div>
             <!-- ^ END PRODUCT PRICE -->
             <!-- START ADD TO CART BUTTON -->
-            <form action="{% url "cart:cart_add" product.id %}" method="post" >
+            <form action="{% url "cart:cart_add" product.id %}" method="post">
               {% csrf_token %}
               {{ cart_product_form }}
-              <input type="submit" value="Add to Cart" class="add-to-cart">
+              <input type="submit" value="Add to Cart" class="addtocartbutton">
           </form>
             <!-- ^ END ADD TO CART BUTTON -->
           </div>
