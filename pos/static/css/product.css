@@ -1,56 +1,250 @@
-body{
-  margin-top: 20px;
+/* body{ */
+/*   margin-top: 20px; */
+/* } */
+
+* {
+  width: 100%;
 }
 
-.grid-template{
-  margin-top: 10vh;
+body {
+  font-family: Arial;
+  padding: 0% 5% 0% 5%;
+}
+
+header {
+  text-align: center;
+  width: 100%;
+}
+
+#logo {
+  float: left;
+  height: 50px;
+  width: auto;
+  margin-right: 0 10px;
+}
+
+.topnav {
+  overflow: visible;
+  padding: 25px 15px;
+}
+
+/* topnav links */
+.topnav a {
+  color: #000;
+  text-align: center;
+  height: 50px;
+  /*   padding: 25px 15px; */
+  text-decoration: none;
+}
+
+.search-container {
+  float: right;
+  margin: 0 auto;
+}
+
+#searchbar {
+  height: 30px;
+  float: left;
+  width: auto;
+  max-width: 800px;
+  min-width: 400px;
+  border-radius: 15px;
+  border: 2px solid black;
+}
+.search-button {
+  float: right;
+  border: 0px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.search-button img {
+  height: 15px;
+  width: auto;
+  overflow: visible;
+  margin: 5px 5px 5px -50px;
+}
+
+#account,
+#cart {
+  float: right;
+  margin: 0 5px;
+  /*       : 50px; */
+}
+
+.user-icon,
+.bag-icon {
+  height: 25px;
+  width: auto;
+  /*       padding: 5px; */
+}
+
+.grid-template {
+  margin-top: 5vh;
   display: grid;
   gap: 10px;
-  grid-template: 
-  "a a b" 
-  "a a c";
-  font-family: 'Roboto', sans-serif;
-} 
-
-p{
-  letter-spacing: .1rem;
-  line-height: 1.6;
+  grid-template:
+    "a a b"
+    "a a c";
+  /*   font-family: 'Roboto', sans-serif; */
 }
-.product-image{
+
+/* p {
+    letter-spacing: 0.1rem;
+    line-height: 1.6;
+  } */
+
+.product-image {
   grid-area: a;
   margin: 0 auto;
 }
 
-.product-image img{
-  min-width: 8vw;
-  min-height: 8vh;
-  width: 600px;
+.product-image img {
+  max-width: 500px;
+  /*   max-width: 50%; */
+  height: auto%;
+  border-radius: 10px;
 }
 
-.information{
+.information {
   grid-area: b;
   border-radius: 3rem;
   display: flex;
   flex-direction: column;
   max-width: 1000px;
-  min-height: 500px;
-  padding: 30px;
-  gap: 30px;
+  min-height: 200px;
+  padding: 0 30px;
+  /*   gap: 30px; */
 }
 
-.logic{
+.logic {
   grid-area: c;
   display: flex;
-  flex-direction: row;
   max-width: 500px;
   margin: 0 auto;
-  align-items: center;
-  justify-content: space-around;
+  align-content: center;
+  justify-content: center;
 }
 
-.logic #amount, .logic #cart-button{
-  width: 100px;
-  height: 50px;
+.logic #value {
+  width: 60px;
+  /*   height: 20px; */
   text-align: center;
-  margin-left: 10px;
+}
+
+.buttons {
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border: 0px solid transparent;
+}
+
+.buttons:hover {
+}
+
+/* .increment-quantity input {
+    width: 60px;
+  }
+   */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  border-radius: 40px;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  border-radius: 40px;
+}
+
+/* FOR HEADER FROM style.css */
+@media screen and (max-width: 800px) {
+  .header,
+  .topnav,
+  .search-container,
+  .left,
+  .right {
+    margin-top: 5px;
+    float: left;
+    width: 100%;
+    padding: 0;
+  }
+  #logo {
+    margin: 0;
+  }
+  .search-container {
+    clear: none;
+    max-width: 500px;
+    width: auto;
+    margin: 0 5px;
+  }
+
+  #searchbar {
+    /*         float: right; */
+    max-width: auto;
+    width: auto;
+  }
+  .search-button {
+    float: left;
+  }
+
+  #cart,
+  #account {
+    float: right;
+    clear: none;
+  }
+  .product-container {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .category {
+    float: left;
+    width: fit-content;
+    margin: 10px;
+    text-align: center;
+  }
+  .category:hover {
+    width: fit-content;
+    padding: 5px 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #logo {
+    float: center;
+    clear: "";
+    max-width: 100%;
+  }
+  .topnav {
+    float: left;
+    width: 100%;
+    max-width: 100%;
+  }
+  .topnav a {
+    float: right;
+    margin: 0 5px;
+    overflow: visible;
+  }
+  .search-container {
+    float: right;
+    margin: 0 5px;
+    display: contents;
+    overflow: visible;
+  }
+  #searchbar {
+    float: left;
+    width: auto;
+    display: flex;
+    min-width: 100px;
+    max-width: 200px;
+  }
+  .search-button {
+    float: right;
+    margin: 0 -15px;
+    overflow: visible;
+  }
 }
