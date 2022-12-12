@@ -1,20 +1,61 @@
 <!DOCTYPE html>
-{% load static %}
+{% load static %} 
 {% block content %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/product.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
     <title>Product</title>
   </head>
   <body>
     <header>
+<<<<<<< HEAD
+    <div class="header">
+      <a href="{% url 'home' %}">
+        <img src="{%static './images/logo.svg' %}" id="logo">
+      </a>
+    </div>
+
+    <div class="topnav">
+      <a id="cart" href="{% url 'cart:cart_detail' %}"><img class="bag-icon" c></a>
+      <a id="account" href="account.html"><img class="user-icon" src="{% static './images/user.svg' %}"></a>
+
+      <!-- SEARCH BAR START -->
+      <div class="search-container">
+        <form action="" method='GET'>
+          <input type="text" placeholder="Search..." name="search">
+          <button class="search-button" type="submit"><img src="{%static './images/search.svg' %}"></button>
+        </form>
+      </div>
+      <!-- ^ SEARCH BAR END -->
+    </div>
+
+  </header>
+
+    <main>
+      <div class="grid-template">
+        <div class="product-image">
+          <img src="{{product.image.url}}" />
+=======
       <div class="header">
         <a href="index.html">
           <img src="images/logo.svg" id="logo">
@@ -42,6 +83,7 @@
         <div class="product-image">
 <<<<<<< HEAD
           <img src="{{product.image.url}}">
+>>>>>>> 82bed75a7b6079ab5f623b3b2833790c348dbcd4
         </div>
         <div class="information">
           <h1>{{product.product_name}}</h1>
@@ -49,6 +91,13 @@
             {{product.description}}
           </p>
           <h2>${{product.price}}</h2>
+<<<<<<< HEAD
+        </div>
+        <div class="logic">
+          <form>
+            <input type="number" id="amount" value="0" min="0" />
+            <input type="submit" id="cart-button" value="Add to Cart" />
+=======
 =======
           <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}">
         </div>
@@ -63,15 +112,46 @@
             {% csrf_token %}
             <input type="number" id="amount" value="0" min="0">
             <input type="submit" id="cart-button" value="Add to Cart">
+>>>>>>> 82bed75a7b6079ab5f623b3b2833790c348dbcd4
           </form>
         </div>
       </div>
     </main>
-    {% endblock %}
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    {% block script %}
 
-    <script  type="text/javascript" src="product.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    
+    <script>
+      const addtocart_button = document.getElementById("cart-button");
+
+      console.log("burrito");
+
+      addtocart_button.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        Toastify({
+          text: "Added to Cart",
+          duration: 1500,
+          newWindow: true,
+          close: true,
+    
+          gravity: "top",
+          position: "center",
+          stopOnFocus: true,
+          style: {
+            background: "green",
+          },
+        }).showToast();
+      });
+
+    </script>
+    
+    {% endblock script %}
 
   </body>
 </html>
+{% endblock %}

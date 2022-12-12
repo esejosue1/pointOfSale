@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% block content %}
 <html lang="en">
 
 <head>
@@ -194,6 +196,7 @@
   <div class="footer">
     <!--     <h2>Footer</h2> -->
     <p>Created by Group 1</p>
+    <p>Testing info - Grand Total: ${{ cart_total }}</p>
   </div>
 
 </body>
@@ -201,3 +204,4 @@
 </html>
 
 </html>
+{% endblock %}
