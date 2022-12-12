@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Joanna (Rachael) editing in progress-->
 <html lang="en">
 
 <head>
@@ -44,11 +44,12 @@
                   style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
 
                   <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
-                    Thank You Nacho Libre For Your Order!
+                    Thank You {{form.first_name}} {{form.last_name}} For Your Order!
                   </h2>
                 </div>
               </td>
             </tr>
+            <!--I did not want the listing invoice to: part on the confirmation page, it should say the person's namein the thank you message-->
 
             <tr>
               <td align="left" style="padding-top: 20px;">
@@ -65,7 +66,7 @@
                     <td>
                       <div class="confirmationn number" width="25%" align="left" bgcolor="#eeeeee"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                        2345678
+                        {{form.order_number}}
                       </div>
                     </td>
                   </tr>
@@ -77,6 +78,7 @@
                         Purchased Item (1)
                       </div>
                     </td>
+                    <!--need to know what the variable name is for the number of items that were purchased-->
 
                     <td>
                       <div class="item cost" width="25%" align="left"
@@ -113,7 +115,7 @@
                     <td>
                       <div class="tax cost" width="25%" align="left"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                        $5.00
+                        ${{form.tax}}
                       </div>
                     </td>
                   </tr>
@@ -135,7 +137,7 @@
                     <td>
                       <div class="total amount" width="25%" align="right"
                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 5px 80px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                        $115.00&nbsp;&nbsp;
+                        ${{form.order_total}}&nbsp;&nbsp;
                       </div>
 
                     </td>
@@ -164,7 +166,7 @@
                         <div class="deliver address" align="left" valign="top"
                           style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                           <p style="font-weight: 800;">Delivery Address</p>
-                          <p>333 Twin Oaks Valley Rd.<br>Academic Hall 206<br>San Marcos, CA 92078</p>
+                          <p>{{form.address}}<br>{{form.address2}}<br>{{form.city}}, {{form.state}} {{form.zip}}</p>
                         </div>
                       </td>
                     </tr>
